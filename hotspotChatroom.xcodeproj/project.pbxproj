@@ -7,21 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63557FA5738BCB504B7BD2D6 /* Pods_hotspotChatroom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A3785741CCF764F0E34D2B /* Pods_hotspotChatroom.framework */; };
 		A20EAAA9225B3ACF0067A9BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAAA8225B3ACF0067A9BD /* AppDelegate.swift */; };
-		A20EAAAB225B3ACF0067A9BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAAAA225B3ACF0067A9BD /* ViewController.swift */; };
 		A20EAAAE225B3ACF0067A9BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20EAAAC225B3ACF0067A9BD /* Main.storyboard */; };
 		A20EAAB0225B3AD00067A9BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20EAAAF225B3AD00067A9BD /* Assets.xcassets */; };
 		A20EAAB3225B3AD00067A9BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20EAAB1225B3AD00067A9BD /* LaunchScreen.storyboard */; };
+		A20EAABB225B3B590067A9BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20EAABA225B3B590067A9BD /* GoogleService-Info.plist */; };
+		A2815372225E1E7E00D3BA3C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2815371225E1E7E00D3BA3C /* SignInViewController.swift */; };
+		A2815374225E1E8E00D3BA3C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */; };
+		A2815376225E1EA500D3BA3C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2815375225E1EA500D3BA3C /* MainViewController.swift */; };
+		A281537B225E215200D3BA3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A281537A225E215200D3BA3C /* User.swift */; };
+		A281537D225F208700D3BA3C /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A281537C225F208700D3BA3C /* LogInHelper.swift */; };
+		A281537F225F210E00D3BA3C /* FirestoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A281537E225F210E00D3BA3C /* FirestoreHelper.swift */; };
+		A28153A3225F5C2000D3BA3C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153A2225F5C2000D3BA3C /* Alert.swift */; };
+		A28153A5225FDD4900D3BA3C /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A28153A4225FDD4900D3BA3C /* Tabs.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4078C80C2BAF59BE986A6D37 /* Pods-hotspotChatroom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hotspotChatroom.debug.xcconfig"; path = "Target Support Files/Pods-hotspotChatroom/Pods-hotspotChatroom.debug.xcconfig"; sourceTree = "<group>"; };
+		56A3785741CCF764F0E34D2B /* Pods_hotspotChatroom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hotspotChatroom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20EAAA5225B3ACF0067A9BD /* hotspotChatroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hotspotChatroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20EAAA8225B3ACF0067A9BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A20EAAAA225B3ACF0067A9BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A20EAAAD225B3ACF0067A9BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A20EAAAF225B3AD00067A9BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A20EAAB2225B3AD00067A9BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A20EAAB4225B3AD00067A9BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A20EAABA225B3B590067A9BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A2815371225E1E7E00D3BA3C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A2815375225E1EA500D3BA3C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A281537A225E215200D3BA3C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A281537C225F208700D3BA3C /* LogInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
+		A281537E225F210E00D3BA3C /* FirestoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreHelper.swift; sourceTree = "<group>"; };
+		A28153A2225F5C2000D3BA3C /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		A28153A4225FDD4900D3BA3C /* Tabs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
+		E00683892074D6499104B5EA /* Pods-hotspotChatroom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hotspotChatroom.release.xcconfig"; path = "Target Support Files/Pods-hotspotChatroom/Pods-hotspotChatroom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63557FA5738BCB504B7BD2D6 /* Pods_hotspotChatroom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +61,8 @@
 			children = (
 				A20EAAA7225B3ACF0067A9BD /* hotspotChatroom */,
 				A20EAAA6225B3ACF0067A9BD /* Products */,
+				D99ED9392A4697062454ED4C /* Pods */,
+				B3C65C9DA5E8C9F66F7DF38A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +77,71 @@
 		A20EAAA7225B3ACF0067A9BD /* hotspotChatroom */ = {
 			isa = PBXGroup;
 			children = (
+				A2815379225E214200D3BA3C /* Models */,
+				A281536F225E1DD200D3BA3C /* Storyboards */,
+				A2815370225E1E2800D3BA3C /* Database */,
+				A281536E225E1DBB00D3BA3C /* Viewcontrollers */,
 				A20EAAA8225B3ACF0067A9BD /* AppDelegate.swift */,
-				A20EAAAA225B3ACF0067A9BD /* ViewController.swift */,
-				A20EAAAC225B3ACF0067A9BD /* Main.storyboard */,
 				A20EAAAF225B3AD00067A9BD /* Assets.xcassets */,
-				A20EAAB1225B3AD00067A9BD /* LaunchScreen.storyboard */,
 				A20EAAB4225B3AD00067A9BD /* Info.plist */,
+				A20EAABA225B3B590067A9BD /* GoogleService-Info.plist */,
 			);
 			path = hotspotChatroom;
+			sourceTree = "<group>";
+		};
+		A281536E225E1DBB00D3BA3C /* Viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				A2815371225E1E7E00D3BA3C /* SignInViewController.swift */,
+				A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */,
+				A2815375225E1EA500D3BA3C /* MainViewController.swift */,
+			);
+			path = Viewcontrollers;
+			sourceTree = "<group>";
+		};
+		A281536F225E1DD200D3BA3C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A20EAAAC225B3ACF0067A9BD /* Main.storyboard */,
+				A20EAAB1225B3AD00067A9BD /* LaunchScreen.storyboard */,
+				A28153A4225FDD4900D3BA3C /* Tabs.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A2815370225E1E2800D3BA3C /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				A281537C225F208700D3BA3C /* LogInHelper.swift */,
+				A281537E225F210E00D3BA3C /* FirestoreHelper.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		A2815379225E214200D3BA3C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A281537A225E215200D3BA3C /* User.swift */,
+				A28153A2225F5C2000D3BA3C /* Alert.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B3C65C9DA5E8C9F66F7DF38A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56A3785741CCF764F0E34D2B /* Pods_hotspotChatroom.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D99ED9392A4697062454ED4C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4078C80C2BAF59BE986A6D37 /* Pods-hotspotChatroom.debug.xcconfig */,
+				E00683892074D6499104B5EA /* Pods-hotspotChatroom.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +151,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A20EAAB7225B3AD00067A9BD /* Build configuration list for PBXNativeTarget "hotspotChatroom" */;
 			buildPhases = (
+				EA1416D36DCBE4620B8EDC8E /* [CP] Check Pods Manifest.lock */,
 				A20EAAA1225B3ACF0067A9BD /* Sources */,
 				A20EAAA2225B3ACF0067A9BD /* Frameworks */,
 				A20EAAA3225B3ACF0067A9BD /* Resources */,
+				5D9CB9FAEFF31556FF5AA2B6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +205,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20EAAB3225B3AD00067A9BD /* LaunchScreen.storyboard in Resources */,
+				A20EAABB225B3B590067A9BD /* GoogleService-Info.plist in Resources */,
+				A28153A5225FDD4900D3BA3C /* Tabs.storyboard in Resources */,
 				A20EAAB0225B3AD00067A9BD /* Assets.xcassets in Resources */,
 				A20EAAAE225B3ACF0067A9BD /* Main.storyboard in Resources */,
 			);
@@ -130,13 +214,80 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5D9CB9FAEFF31556FF5AA2B6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-hotspotChatroom/Pods-hotspotChatroom-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hotspotChatroom/Pods-hotspotChatroom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA1416D36DCBE4620B8EDC8E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-hotspotChatroom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A20EAAA1225B3ACF0067A9BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A20EAAAB225B3ACF0067A9BD /* ViewController.swift in Sources */,
+				A2815374225E1E8E00D3BA3C /* SignUpViewController.swift in Sources */,
+				A281537B225E215200D3BA3C /* User.swift in Sources */,
+				A2815372225E1E7E00D3BA3C /* SignInViewController.swift in Sources */,
 				A20EAAA9225B3ACF0067A9BD /* AppDelegate.swift in Sources */,
+				A281537D225F208700D3BA3C /* LogInHelper.swift in Sources */,
+				A281537F225F210E00D3BA3C /* FirestoreHelper.swift in Sources */,
+				A28153A3225F5C2000D3BA3C /* Alert.swift in Sources */,
+				A2815376225E1EA500D3BA3C /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +431,7 @@
 		};
 		A20EAAB8225B3AD00067A9BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4078C80C2BAF59BE986A6D37 /* Pods-hotspotChatroom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +449,7 @@
 		};
 		A20EAAB9225B3AD00067A9BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E00683892074D6499104B5EA /* Pods-hotspotChatroom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
