@@ -21,6 +21,7 @@
 		A281537F225F210E00D3BA3C /* FirestoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A281537E225F210E00D3BA3C /* FirestoreHelper.swift */; };
 		A28153A3225F5C2000D3BA3C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153A2225F5C2000D3BA3C /* Alert.swift */; };
 		A28153A5225FDD4900D3BA3C /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A28153A4225FDD4900D3BA3C /* Tabs.storyboard */; };
+		A28153A7225FE61800D3BA3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153A6225FE61800D3BA3C /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		A281537E225F210E00D3BA3C /* FirestoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreHelper.swift; sourceTree = "<group>"; };
 		A28153A2225F5C2000D3BA3C /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A28153A4225FDD4900D3BA3C /* Tabs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
+		A28153A6225FE61800D3BA3C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E00683892074D6499104B5EA /* Pods-hotspotChatroom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hotspotChatroom.release.xcconfig"; path = "Target Support Files/Pods-hotspotChatroom/Pods-hotspotChatroom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 				A2815371225E1E7E00D3BA3C /* SignInViewController.swift */,
 				A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */,
 				A2815375225E1EA500D3BA3C /* MainViewController.swift */,
+				A28153A6225FE61800D3BA3C /* ProfileViewController.swift */,
 			);
 			path = Viewcontrollers;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				A20EAAA9225B3ACF0067A9BD /* AppDelegate.swift in Sources */,
 				A281537D225F208700D3BA3C /* LogInHelper.swift in Sources */,
 				A281537F225F210E00D3BA3C /* FirestoreHelper.swift in Sources */,
+				A28153A7225FE61800D3BA3C /* ProfileViewController.swift in Sources */,
 				A28153A3225F5C2000D3BA3C /* Alert.swift in Sources */,
 				A2815376225E1EA500D3BA3C /* MainViewController.swift in Sources */,
 			);

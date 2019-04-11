@@ -27,7 +27,7 @@ class SignInViewController: UIViewController {
         showSpinner()
         LogInHelper.signInUser(email: email, password: password) { (authResult, error) in
             if error != nil {
-                print("SIGN IN ERROR:\(error!.localizedDescription)")
+                print("SIGN IN ERROR: \(error!.localizedDescription)")
                 Alert.showErrorAlert(on: self, error: error!)
                 self.hideSpinner()
                 return

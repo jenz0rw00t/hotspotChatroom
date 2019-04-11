@@ -13,16 +13,18 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var welcomeLabel: UILabel!
     
+    var loggedIn = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
     }
     
-    @IBAction func signOutPressed(_ sender: Any) {
-        Alert.showOneOptionAndCancelAlert(on: self, title: "Are you sure?", message: nil, buttonText: "Sign Out") { (_) in
-            LogInHelper.signOutUser()
-            self.performSegue(withIdentifier: "signInSegue", sender: nil)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if loggedIn {
+            performSegue(withIdentifier: "toTabSegue", sender: nil)
         }
     }
     
@@ -33,14 +35,13 @@ class MainViewController: UIViewController {
         listener = LogInHelper.signedInListener { (auth, user) in
             if user != nil {
                 print("-------USER IS LOGGED IN-------")
+                self.performSegue(withIdentifier: "toTabSegue", sender: nil)
+                self.loggedIn = true
             } else {
                 print("-------USER IS NOT LOGGED IN-------")
+                self.loggedIn = false
                 self.performSegue(withIdentifier: "signInSegue", sender: nil)
             }
-        }
-        
-        if let currentUserID = LogInHelper.getCurrentUserID() {
-            welcomeLabel.text = "Welcome, \(currentUserID)"
         }
     }
     

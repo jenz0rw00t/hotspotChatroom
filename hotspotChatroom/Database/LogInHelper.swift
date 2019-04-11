@@ -26,7 +26,7 @@ struct LogInHelper {
         do {
             try authRef.signOut()
         } catch let error {
-            print("SIGN OUT ERROR:\(error.localizedDescription)")
+            print("SIGN OUT ERROR: \(error.localizedDescription)")
         }
     }
     
