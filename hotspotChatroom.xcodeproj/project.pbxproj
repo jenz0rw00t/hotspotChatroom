@@ -15,13 +15,14 @@
 		A20EAABB225B3B590067A9BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20EAABA225B3B590067A9BD /* GoogleService-Info.plist */; };
 		A2815372225E1E7E00D3BA3C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2815371225E1E7E00D3BA3C /* SignInViewController.swift */; };
 		A2815374225E1E8E00D3BA3C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */; };
-		A2815376225E1EA500D3BA3C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2815375225E1EA500D3BA3C /* MainViewController.swift */; };
 		A281537B225E215200D3BA3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A281537A225E215200D3BA3C /* User.swift */; };
 		A281537D225F208700D3BA3C /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A281537C225F208700D3BA3C /* LogInHelper.swift */; };
 		A281537F225F210E00D3BA3C /* FirestoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A281537E225F210E00D3BA3C /* FirestoreHelper.swift */; };
 		A28153A3225F5C2000D3BA3C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153A2225F5C2000D3BA3C /* Alert.swift */; };
-		A28153A5225FDD4900D3BA3C /* Tabs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A28153A4225FDD4900D3BA3C /* Tabs.storyboard */; };
 		A28153A7225FE61800D3BA3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153A6225FE61800D3BA3C /* ProfileViewController.swift */; };
+		A28153A922609FFE00D3BA3C /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A28153A822609FFE00D3BA3C /* SignIn.storyboard */; };
+		A28153AD2260A38700D3BA3C /* ChatroomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153AC2260A38700D3BA3C /* ChatroomTableViewController.swift */; };
+		A28153AF2260A63A00D3BA3C /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153AE2260A63A00D3BA3C /* ChatTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,13 +37,14 @@
 		A20EAABA225B3B590067A9BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A2815371225E1E7E00D3BA3C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		A2815375225E1EA500D3BA3C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A281537A225E215200D3BA3C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A281537C225F208700D3BA3C /* LogInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
 		A281537E225F210E00D3BA3C /* FirestoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreHelper.swift; sourceTree = "<group>"; };
 		A28153A2225F5C2000D3BA3C /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		A28153A4225FDD4900D3BA3C /* Tabs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tabs.storyboard; sourceTree = "<group>"; };
 		A28153A6225FE61800D3BA3C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A28153A822609FFE00D3BA3C /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		A28153AC2260A38700D3BA3C /* ChatroomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomTableViewController.swift; sourceTree = "<group>"; };
+		A28153AE2260A63A00D3BA3C /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		E00683892074D6499104B5EA /* Pods-hotspotChatroom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hotspotChatroom.release.xcconfig"; path = "Target Support Files/Pods-hotspotChatroom/Pods-hotspotChatroom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,8 +98,9 @@
 			children = (
 				A2815371225E1E7E00D3BA3C /* SignInViewController.swift */,
 				A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */,
-				A2815375225E1EA500D3BA3C /* MainViewController.swift */,
 				A28153A6225FE61800D3BA3C /* ProfileViewController.swift */,
+				A28153AC2260A38700D3BA3C /* ChatroomTableViewController.swift */,
+				A28153AE2260A63A00D3BA3C /* ChatTableViewController.swift */,
 			);
 			path = Viewcontrollers;
 			sourceTree = "<group>";
@@ -107,7 +110,7 @@
 			children = (
 				A20EAAAC225B3ACF0067A9BD /* Main.storyboard */,
 				A20EAAB1225B3AD00067A9BD /* LaunchScreen.storyboard */,
-				A28153A4225FDD4900D3BA3C /* Tabs.storyboard */,
+				A28153A822609FFE00D3BA3C /* SignIn.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -208,8 +211,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20EAAB3225B3AD00067A9BD /* LaunchScreen.storyboard in Resources */,
+				A28153A922609FFE00D3BA3C /* SignIn.storyboard in Resources */,
 				A20EAABB225B3B590067A9BD /* GoogleService-Info.plist in Resources */,
-				A28153A5225FDD4900D3BA3C /* Tabs.storyboard in Resources */,
 				A20EAAB0225B3AD00067A9BD /* Assets.xcassets in Resources */,
 				A20EAAAE225B3ACF0067A9BD /* Main.storyboard in Resources */,
 			);
@@ -285,13 +288,14 @@
 			files = (
 				A2815374225E1E8E00D3BA3C /* SignUpViewController.swift in Sources */,
 				A281537B225E215200D3BA3C /* User.swift in Sources */,
+				A28153AD2260A38700D3BA3C /* ChatroomTableViewController.swift in Sources */,
 				A2815372225E1E7E00D3BA3C /* SignInViewController.swift in Sources */,
 				A20EAAA9225B3ACF0067A9BD /* AppDelegate.swift in Sources */,
 				A281537D225F208700D3BA3C /* LogInHelper.swift in Sources */,
 				A281537F225F210E00D3BA3C /* FirestoreHelper.swift in Sources */,
 				A28153A7225FE61800D3BA3C /* ProfileViewController.swift in Sources */,
 				A28153A3225F5C2000D3BA3C /* Alert.swift in Sources */,
-				A2815376225E1EA500D3BA3C /* MainViewController.swift in Sources */,
+				A28153AF2260A63A00D3BA3C /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
