@@ -26,4 +26,12 @@ struct FirestoreHelper {
         db.collection("users").document(userId).updateData(["username":userName], completion: completion)
     }
     
+    static func addChatroom(chatroom: Chatroom, completion: ((Error?) -> Void)?) {
+        db.collection("chatrooms").addDocument(data: chatroom.toDictionary(), completion: completion)
+    }
+    
+    static func chatroomSnapshotListener(listener: @escaping FIRQuerySnapshotBlock) {
+        db.collection("chatrooms").addSnapshotListener(listener)
+    }
+    
 }

@@ -23,6 +23,8 @@
 		A28153A922609FFE00D3BA3C /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A28153A822609FFE00D3BA3C /* SignIn.storyboard */; };
 		A28153AD2260A38700D3BA3C /* ChatroomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153AC2260A38700D3BA3C /* ChatroomTableViewController.swift */; };
 		A28153AF2260A63A00D3BA3C /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153AE2260A63A00D3BA3C /* ChatTableViewController.swift */; };
+		A28153B1226B484D00D3BA3C /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153B0226B484D00D3BA3C /* Chatroom.swift */; };
+		A28153B4226B4FB700D3BA3C /* ChatroomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153B3226B4FB700D3BA3C /* ChatroomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		A28153A822609FFE00D3BA3C /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		A28153AC2260A38700D3BA3C /* ChatroomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomTableViewController.swift; sourceTree = "<group>"; };
 		A28153AE2260A63A00D3BA3C /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		A28153B0226B484D00D3BA3C /* Chatroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
+		A28153B3226B4FB700D3BA3C /* ChatroomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomTableViewCell.swift; sourceTree = "<group>"; };
 		E00683892074D6499104B5EA /* Pods-hotspotChatroom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hotspotChatroom.release.xcconfig"; path = "Target Support Files/Pods-hotspotChatroom/Pods-hotspotChatroom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +89,7 @@
 				A281536F225E1DD200D3BA3C /* Storyboards */,
 				A2815370225E1E2800D3BA3C /* Database */,
 				A281536E225E1DBB00D3BA3C /* Viewcontrollers */,
+				A28153B2226B4F5500D3BA3C /* TableViewCells */,
 				A20EAAA8225B3ACF0067A9BD /* AppDelegate.swift */,
 				A20EAAAF225B3AD00067A9BD /* Assets.xcassets */,
 				A20EAAB4225B3AD00067A9BD /* Info.plist */,
@@ -129,8 +134,17 @@
 			children = (
 				A281537A225E215200D3BA3C /* User.swift */,
 				A28153A2225F5C2000D3BA3C /* Alert.swift */,
+				A28153B0226B484D00D3BA3C /* Chatroom.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A28153B2226B4F5500D3BA3C /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				A28153B3226B4FB700D3BA3C /* ChatroomTableViewCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		B3C65C9DA5E8C9F66F7DF38A /* Frameworks */ = {
@@ -291,10 +305,12 @@
 				A28153AD2260A38700D3BA3C /* ChatroomTableViewController.swift in Sources */,
 				A2815372225E1E7E00D3BA3C /* SignInViewController.swift in Sources */,
 				A20EAAA9225B3ACF0067A9BD /* AppDelegate.swift in Sources */,
+				A28153B1226B484D00D3BA3C /* Chatroom.swift in Sources */,
 				A281537D225F208700D3BA3C /* LogInHelper.swift in Sources */,
 				A281537F225F210E00D3BA3C /* FirestoreHelper.swift in Sources */,
 				A28153A7225FE61800D3BA3C /* ProfileViewController.swift in Sources */,
 				A28153A3225F5C2000D3BA3C /* Alert.swift in Sources */,
+				A28153B4226B4FB700D3BA3C /* ChatroomTableViewCell.swift in Sources */,
 				A28153AF2260A63A00D3BA3C /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

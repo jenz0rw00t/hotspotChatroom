@@ -49,6 +49,8 @@ class ProfileViewController: UIViewController {
         emailLabel.text = ""
     }
     
+    // MARK: - viewWillAppear signed in listener
+    
     var listener: AuthStateDidChangeListenerHandle?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +69,8 @@ class ProfileViewController: UIViewController {
         LogInHelper.removeSignInListener(listener: listener!)
     }
     
+    // MARK: - Button functions
+    
     @IBAction func editUsernamePressed(_ sender: Any) {
         guard let user = currentUser else { return }
         
@@ -77,16 +81,19 @@ class ProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             guard let newUsername = alert.textFields?.first?.text else { return }
-            FirestoreHelper.updateUsername(userId: user.userId, userName: newUsername, completion: { (error) in
-                if error != nil {
-                    Alert.showErrorAlert(on: self, error: error!)
-                    return
-                }
-                self.setupCurrentUser()
-            })
-            
+            self.updateUsername(newUsername: newUsername)
         }))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func updateUsername(newUsername: String) {
+        FirestoreHelper.updateUsername(userId: currentUser!.userId, userName: newUsername, completion: { (error) in
+            if error != nil {
+                Alert.showErrorAlert(on: self, error: error!)
+                return
+            }
+            self.setupCurrentUser()
+        })
     }
     
     @objc func handleLogOut() {

@@ -98,14 +98,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="sWY-fV-hnd">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatroomCell" rowHeight="80" id="sWY-fV-hnd" customClass="ChatroomTableViewCell" customModule="hotspotChatroom" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sWY-fV-hnd" id="Yov-aN-JW8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="754" text="Test chatroom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAl-Tm-ojR">
+                                            <rect key="frame" x="16" y="8" width="382" height="35"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" verticalCompressionResistancePriority="753" text="Created by: Pelle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBg-Xf-6wK">
+                                            <rect key="frame" x="16" y="51" width="382" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="TBg-Xf-6wK" firstAttribute="leading" secondItem="Yov-aN-JW8" secondAttribute="leading" constant="16" id="MNe-R0-qse"/>
+                                        <constraint firstAttribute="trailing" secondItem="TBg-Xf-6wK" secondAttribute="trailing" constant="16" id="SEr-zd-nE6"/>
+                                        <constraint firstItem="lAl-Tm-ojR" firstAttribute="top" secondItem="Yov-aN-JW8" secondAttribute="top" constant="8" id="ZBQ-0i-10P"/>
+                                        <constraint firstItem="lAl-Tm-ojR" firstAttribute="leading" secondItem="Yov-aN-JW8" secondAttribute="leading" constant="16" id="dgl-Vh-Vhj"/>
+                                        <constraint firstAttribute="trailing" secondItem="lAl-Tm-ojR" secondAttribute="trailing" constant="16" id="taw-qa-9cX"/>
+                                        <constraint firstItem="TBg-Xf-6wK" firstAttribute="top" secondItem="lAl-Tm-ojR" secondAttribute="bottom" constant="8" id="vEi-lJ-Op9"/>
+                                        <constraint firstAttribute="bottom" secondItem="TBg-Xf-6wK" secondAttribute="bottom" constant="8" id="wXs-c2-iw5"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="creatorLabel" destination="TBg-Xf-6wK" id="7ly-4x-SL4"/>
+                                    <outlet property="nameLabel" destination="lAl-Tm-ojR" id="dmb-K2-q2F"/>
                                     <segue destination="fPY-SE-WYS" kind="show" id="n7g-gM-4TE"/>
                                 </connections>
                             </tableViewCell>
@@ -115,11 +140,17 @@
                             <outlet property="delegate" destination="7fi-B1-1cP" id="kZQ-93-UhU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="2be-Wk-pZ2"/>
+                    <navigationItem key="navigationItem" id="2be-Wk-pZ2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RyL-F2-afU">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="7fi-B1-1cP" id="pHt-sr-NVH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkY-N9-mx0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2493" y="-1840"/>
+            <point key="canvasLocation" x="2492.753623188406" y="-1840.1785714285713"/>
         </scene>
         <!--Chat Table View Controller-->
         <scene sceneID="2Mm-oa-CXu">
@@ -198,7 +229,6 @@
         <!--Profile-->
         <scene sceneID="gdj-Ds-eOP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k3S-oL-Hln" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gtM-kC-nQr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" id="6P3-XO-i3q"/>
                     <toolbarItems/>
@@ -211,6 +241,7 @@
                         <segue destination="8Wp-kf-ir9" kind="relationship" relationship="rootViewController" id="Zqa-e1-I2v"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k3S-oL-Hln" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1570" y="-1156"/>
         </scene>
