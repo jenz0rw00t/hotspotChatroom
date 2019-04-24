@@ -13,6 +13,7 @@
 		A20EAAB0225B3AD00067A9BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20EAAAF225B3AD00067A9BD /* Assets.xcassets */; };
 		A20EAAB3225B3AD00067A9BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20EAAB1225B3AD00067A9BD /* LaunchScreen.storyboard */; };
 		A20EAABB225B3B590067A9BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20EAABA225B3B590067A9BD /* GoogleService-Info.plist */; };
+		A214CEB222707F7800A94C44 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A214CEB122707F7800A94C44 /* ChatViewController.swift */; };
 		A2815372225E1E7E00D3BA3C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2815371225E1E7E00D3BA3C /* SignInViewController.swift */; };
 		A2815374225E1E8E00D3BA3C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */; };
 		A281537B225E215200D3BA3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A281537A225E215200D3BA3C /* User.swift */; };
@@ -22,9 +23,9 @@
 		A28153A7225FE61800D3BA3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153A6225FE61800D3BA3C /* ProfileViewController.swift */; };
 		A28153A922609FFE00D3BA3C /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A28153A822609FFE00D3BA3C /* SignIn.storyboard */; };
 		A28153AD2260A38700D3BA3C /* ChatroomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153AC2260A38700D3BA3C /* ChatroomTableViewController.swift */; };
-		A28153AF2260A63A00D3BA3C /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153AE2260A63A00D3BA3C /* ChatTableViewController.swift */; };
 		A28153B1226B484D00D3BA3C /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153B0226B484D00D3BA3C /* Chatroom.swift */; };
 		A28153B4226B4FB700D3BA3C /* ChatroomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153B3226B4FB700D3BA3C /* ChatroomTableViewCell.swift */; };
+		A28153B6226F0A0200D3BA3C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153B5226F0A0200D3BA3C /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		A20EAAB2225B3AD00067A9BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A20EAAB4225B3AD00067A9BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20EAABA225B3B590067A9BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A214CEB122707F7800A94C44 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A2815371225E1E7E00D3BA3C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A281537A225E215200D3BA3C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -46,9 +48,9 @@
 		A28153A6225FE61800D3BA3C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A28153A822609FFE00D3BA3C /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		A28153AC2260A38700D3BA3C /* ChatroomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomTableViewController.swift; sourceTree = "<group>"; };
-		A28153AE2260A63A00D3BA3C /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		A28153B0226B484D00D3BA3C /* Chatroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		A28153B3226B4FB700D3BA3C /* ChatroomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomTableViewCell.swift; sourceTree = "<group>"; };
+		A28153B5226F0A0200D3BA3C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E00683892074D6499104B5EA /* Pods-hotspotChatroom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hotspotChatroom.release.xcconfig"; path = "Target Support Files/Pods-hotspotChatroom/Pods-hotspotChatroom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,7 +107,7 @@
 				A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */,
 				A28153A6225FE61800D3BA3C /* ProfileViewController.swift */,
 				A28153AC2260A38700D3BA3C /* ChatroomTableViewController.swift */,
-				A28153AE2260A63A00D3BA3C /* ChatTableViewController.swift */,
+				A214CEB122707F7800A94C44 /* ChatViewController.swift */,
 			);
 			path = Viewcontrollers;
 			sourceTree = "<group>";
@@ -135,6 +137,7 @@
 				A281537A225E215200D3BA3C /* User.swift */,
 				A28153A2225F5C2000D3BA3C /* Alert.swift */,
 				A28153B0226B484D00D3BA3C /* Chatroom.swift */,
+				A28153B5226F0A0200D3BA3C /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,9 +312,10 @@
 				A281537D225F208700D3BA3C /* LogInHelper.swift in Sources */,
 				A281537F225F210E00D3BA3C /* FirestoreHelper.swift in Sources */,
 				A28153A7225FE61800D3BA3C /* ProfileViewController.swift in Sources */,
+				A28153B6226F0A0200D3BA3C /* Message.swift in Sources */,
+				A214CEB222707F7800A94C44 /* ChatViewController.swift in Sources */,
 				A28153A3225F5C2000D3BA3C /* Alert.swift in Sources */,
 				A28153B4226B4FB700D3BA3C /* ChatroomTableViewCell.swift in Sources */,
-				A28153AF2260A63A00D3BA3C /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,17 +8,22 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import CoreLocation
 
-class ChatroomTableViewController: UITableViewController {
+class ChatroomTableViewController: UITableViewController, CLLocationManagerDelegate {
     
     var chatrooms = [Chatroom]()
     var currentUser: User?
+    let locationManager = CLLocationManager()
+    let proximityToChatroom: Double = 20 // How close in meters you need to be able to join a chatroom
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupRefreshControl()
         getCurrentUser()
-        startChatroomListener()
+        checkLocationServices()
         
     }
     
@@ -26,11 +31,19 @@ class ChatroomTableViewController: UITableViewController {
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         createChatroomAlert()
-        
-        
     }
     
     // MARK: - Functions
+    
+    func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Searching for nearby chatrooms...")
+        refreshControl?.addTarget(self, action: #selector(dragDownUpdate) , for: .valueChanged)
+    }
+    
+    @objc func dragDownUpdate() {
+        searchForNearbyChatrooms()
+    }
     
     func getCurrentUser() {
         guard let userId = LogInHelper.getCurrentUserID() else { return }
@@ -56,24 +69,28 @@ class ChatroomTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
             guard let chatroomName = alert.textFields?.first?.text else { return }
             guard let currentUsername = self.currentUser?.username else { return }
-            let chatroom = Chatroom(name: chatroomName, creatorUsername: currentUsername, chatroomId: "")
-            self.createChatroom(chatroom: chatroom)
+            self.createChatroom(name: chatroomName, creatorUsername: currentUsername)
         }))
         present(alert, animated: true, completion: nil)
     }
     
-    func createChatroom(chatroom: Chatroom) {
-        FirestoreHelper.addChatroom(chatroom: chatroom) { (error) in
+    func createChatroom(name: String, creatorUsername: String) {
+        guard let location = locationManager.location?.coordinate else { return }
+        let geoPoint = GeoPoint(latitude: location.latitude, longitude: location.longitude)
+        FirestoreHelper.addChatroom(name: name, creatorUsername: creatorUsername, location: geoPoint) { (error) in
             if error != nil {
                 print("ADD CHATROOM ERROR: \(error!.localizedDescription)")
             }
+            self.searchForNearbyChatrooms()
         }
     }
     
-    func startChatroomListener() {
-        FirestoreHelper.chatroomSnapshotListener { (querySnapshot, error) in
+    func searchForNearbyChatrooms() {
+        guard let location = locationManager.location?.coordinate else { return }
+        refreshControl?.beginRefreshing()
+        FirestoreHelper.getChatroomsNearBy(latitude: location.latitude, longitude: location.longitude, meters: proximityToChatroom) { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
-                print("Error fetching documents: \(error!)")
+                print("Error fetching nearby chatrooms: \(error!)")
                 return
             }
             self.chatrooms.removeAll()
@@ -83,6 +100,7 @@ class ChatroomTableViewController: UITableViewController {
                 }
             }
             self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -95,6 +113,8 @@ class ChatroomTableViewController: UITableViewController {
         listener = LogInHelper.signedInListener { (auth, user) in
             if user == nil {
                 self.tabBarController!.performSegue(withIdentifier: "signInSegue", sender: nil)
+            } else if user?.uid != LogInHelper.getCurrentUserID() {
+                self.currentUser = nil
             }
         }
     }
@@ -123,7 +143,54 @@ class ChatroomTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "chatroomToChat", sender: nil)
+    }
+    
+    // Mark: - CLLocationManagerDelegate and location permissions
+    
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    func checkLocationAuth() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            locationManager.distanceFilter = 10 // Is this needed? maby not?
+            locationManager.startUpdatingLocation()
+            searchForNearbyChatrooms()
+            break
+        case .denied:
+            Alert.showBasicOkAlert(on: self, title: "Location services are denied", message: "Please turn on location services for this app to function correctly!")
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            break
+        case .restricted:
+            Alert.showBasicOkAlert(on: self, title: "Location services are restricted", message: "Please turn on location services for this app to function correctly!")
+            break
+        case .authorizedAlways:
+            break
+        }
+    }
+    
+    func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAuth()
+        } else {
+            Alert.showBasicOkAlert(on: self, title: "Location services are unavailable", message: "Please turn on location services for this app to function correctly!")
+        }
+    }
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        searchForNearbyChatrooms()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuth()
+    }
     
 
 }
