@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        startListener()
+        startAuthListener()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(handleLogOut))
         
     }
@@ -52,18 +52,18 @@ class ProfileViewController: UIViewController {
     
     // MARK: - viewWillAppear signed in listener
     
-    var listener: AuthStateDidChangeListenerHandle?
+    var authListener: AuthStateDidChangeListenerHandle?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if listener == nil {
-            startListener()
+        if authListener == nil {
+            startAuthListener()
         }
         setupCurrentUser()
     }
     
-    func startListener() {
-        listener = LogInHelper.signedInListener { (auth, user) in
+    func startAuthListener() {
+        authListener = LogInHelper.signedInListener { (auth, user) in
             if user == nil {
                 self.tabBarController!.performSegue(withIdentifier: "signInSegue", sender: nil)
                 self.clearLabels()
@@ -74,7 +74,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        LogInHelper.removeSignInListener(listener: listener!)
+        LogInHelper.removeSignInListener(listener: authListener!)
     }
     
     // MARK: - Button functions

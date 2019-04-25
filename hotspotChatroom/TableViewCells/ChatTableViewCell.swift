@@ -17,12 +17,15 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var sentMessageLabel: UILabel!
     
     func setMessageToCell(message: Message) {
+        usernameLabel.isHidden = false
+        chatbubbleView.isHidden = false
         sentChatbubbleView.isHidden = true
         usernameLabel.text = message.username
         messageLabel.text = message.message
     }
     
     func setSentMessageToCell(message: Message) {
+        sentChatbubbleView.isHidden = false
         usernameLabel.isHidden = true
         chatbubbleView.isHidden = true
         sentMessageLabel.text = message.message

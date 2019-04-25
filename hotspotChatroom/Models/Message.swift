@@ -14,7 +14,8 @@ struct Message {
     let userId: String
     let message: String
     let messageId: String
-    //  TODO:  let userRef: DocumentReference
+    // TODO: TIMESTAMP
+    // TODO:  let userRef: DocumentReference
     
     func toDictionary() -> [String:Any] {
         return ["username":username, "userId":userId, "message":message, "messageId":messageId]
@@ -28,7 +29,7 @@ struct Message {
     }
     
     init?(data:[String:Any]) {
-        guard let saveUsername = data["name"] as? String,
+        guard let saveUsername = data["username"] as? String,
             let saveUserId = data["userId"] as? String,
             let saveMessage = data["message"] as? String,
             let saveMessageId = data["messageId"] as? String

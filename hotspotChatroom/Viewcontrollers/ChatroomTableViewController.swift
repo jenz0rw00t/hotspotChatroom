@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseAuth
-import Firebase
+import FirebaseFirestore
 import CoreLocation
 
 class ChatroomTableViewController: UITableViewController, CLLocationManagerDelegate {
@@ -16,12 +16,12 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     var chatrooms = [Chatroom]()
     var currentUser: User?
     let locationManager = CLLocationManager()
-    let proximityToChatroom: Double = 20 // How close in meters you need to be able to join a chatroom
+    let proximityToChatroom: Double = 50 // How close in meters you need to be able to join a chatroom
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        startListener()
+        startAuthListener()
         getCurrentUser()
         setupRefreshControl()
         checkLocationServices()
@@ -109,31 +109,30 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     
     // MARK: - viewWillAppear signed in listener
     
-    var listener: AuthStateDidChangeListenerHandle?
+    var authListener: AuthStateDidChangeListenerHandle?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if listener == nil {
-            startListener()
+        if authListener == nil {
+            startAuthListener()
         }
         searchForNearbyChatrooms()
     }
     
-    func startListener() {
-        listener = LogInHelper.signedInListener { (auth, user) in
+    func startAuthListener() {
+        authListener = LogInHelper.signedInListener { (auth, user) in
             if user == nil {
                 self.refreshControl?.endRefreshing()
                 self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
             } else if user?.uid != LogInHelper.getCurrentUserID() {
                 self.currentUser = nil
-                self.getCurrentUser()
             }
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        LogInHelper.removeSignInListener(listener: listener!)
+        LogInHelper.removeSignInListener(listener: authListener!)
     }
 
     // MARK: - Table view data source
@@ -168,11 +167,14 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
         if segue.identifier == "chatroomToChat" {
             if let chatVC = segue.destination as? ChatViewController {
                 chatVC.chatroom = selectedChatroom
+                chatVC.currentUser = currentUser
             }
         }
     }
     
     // MARK: - CLLocationManagerDelegate and location permissions
+    
+    var previousLocation: CLLocation?
     
     func setupLocationManager() {
         locationManager.delegate = self
@@ -182,8 +184,9 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     func checkLocationAuth() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
-            locationManager.distanceFilter = 5 // Is this needed? maby not?
+//            locationManager.distanceFilter = 5 // Is this needed? maby not?
             locationManager.startUpdatingLocation()
+            previousLocation = locationManager.location
             searchForNearbyChatrooms()
             break
         case .denied:
@@ -210,6 +213,9 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let previous = previousLocation else { return }
+        guard Double(locations.last!.distance(from: previous)) > 10.0 else { return }
+        previousLocation = locations.last
         searchForNearbyChatrooms()
     }
     
