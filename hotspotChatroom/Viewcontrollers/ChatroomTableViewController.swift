@@ -21,8 +21,9 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupRefreshControl()
+        startListener()
         getCurrentUser()
+        setupRefreshControl()
         checkLocationServices()
         
     }
@@ -77,7 +78,8 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     func createChatroom(name: String, creatorUsername: String) {
         guard let location = locationManager.location?.coordinate else { return }
         let geoPoint = GeoPoint(latitude: location.latitude, longitude: location.longitude)
-        FirestoreHelper.addChatroom(name: name, creatorUsername: creatorUsername, location: geoPoint) { (error) in
+        let chatroom = Chatroom(name: name, creatorUsername: creatorUsername, chatroomId: "", location: geoPoint)
+        FirestoreHelper.addChatroom(chatroom: chatroom) { (error) in
             if error != nil {
                 print("ADD CHATROOM ERROR: \(error!.localizedDescription)")
             }
@@ -91,6 +93,7 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
         FirestoreHelper.getChatroomsNearBy(latitude: location.latitude, longitude: location.longitude, meters: proximityToChatroom) { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching nearby chatrooms: \(error!)")
+                self.refreshControl?.endRefreshing()
                 return
             }
             self.chatrooms.removeAll()
@@ -110,11 +113,20 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if listener == nil {
+            startListener()
+        }
+        searchForNearbyChatrooms()
+    }
+    
+    func startListener() {
         listener = LogInHelper.signedInListener { (auth, user) in
             if user == nil {
-                self.tabBarController!.performSegue(withIdentifier: "signInSegue", sender: nil)
+                self.refreshControl?.endRefreshing()
+                self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
             } else if user?.uid != LogInHelper.getCurrentUserID() {
                 self.currentUser = nil
+                self.getCurrentUser()
             }
         }
     }
@@ -143,11 +155,24 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
         return cell
     }
     
+    var selectedChatroom: Chatroom?
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedChatroom = chatrooms[indexPath.row]
         performSegue(withIdentifier: "chatroomToChat", sender: nil)
     }
     
-    // Mark: - CLLocationManagerDelegate and location permissions
+    // MARK: - Prepare for segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "chatroomToChat" {
+            if let chatVC = segue.destination as? ChatViewController {
+                chatVC.chatroom = selectedChatroom
+            }
+        }
+    }
+    
+    // MARK: - CLLocationManagerDelegate and location permissions
     
     func setupLocationManager() {
         locationManager.delegate = self
@@ -157,7 +182,7 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     func checkLocationAuth() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
-            locationManager.distanceFilter = 10 // Is this needed? maby not?
+            locationManager.distanceFilter = 5 // Is this needed? maby not?
             locationManager.startUpdatingLocation()
             searchForNearbyChatrooms()
             break

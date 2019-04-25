@@ -26,19 +26,25 @@ struct FirestoreHelper {
         db.collection("users").document(userId).updateData(["username":userName], completion: completion)
     }
     
-    static func addChatroom(name: String, creatorUsername: String, location: GeoPoint, completion: ((Error?) -> Void)?) {
+    static func addChatroom(chatroom:Chatroom , completion: ((Error?) -> Void)?) {
         let newDocumentID = UUID().uuidString
-        let chatroom = Chatroom(name: name, creatorUsername: creatorUsername, chatroomId: newDocumentID, location: location)
-        db.collection("chatrooms").document(newDocumentID).setData(chatroom.toDictionary(), completion: completion)
+        let chatroomWithId = Chatroom(name: chatroom.name, creatorUsername: chatroom.creatorUsername, chatroomId: newDocumentID, location: chatroom.location)
+        db.collection("chatrooms").document(newDocumentID).setData(chatroomWithId.toDictionary(), completion: completion)
     }
     
-    static func chatroomSnapshotListener(completion: @escaping FIRQuerySnapshotBlock) -> ListenerRegistration {
-        let listener = db.collection("chatrooms").addSnapshotListener(completion)
+    static func addMessage(message:Message, chatroomId:String, completion: ((Error?) -> Void)?) {
+        let newDocumentID = UUID().uuidString
+        let messageWithId = Message(username: message.username, userId: message.userId, message: message.message, messageId: newDocumentID)
+        db.collection("chatrooms").document(chatroomId).collection("messages").document(newDocumentID).setData(messageWithId.toDictionary(), completion: completion)
+    }
+    
+    static func chatSnapshotListener(chatroomId: String, completion: @escaping FIRQuerySnapshotBlock) -> ListenerRegistration {
+        let listener = db.collection("chatrooms").document(chatroomId).collection("messages").addSnapshotListener(completion)
         return listener
     }
     
     // NEARBY DOCUMENT SEARCH BY Ryan Heitner copied from https://stackoverflow.com/a/51439726
-    
+    // TODO: Do this query without cashing!
     static func getChatroomsNearBy(latitude: Double, longitude: Double, meters: Double, completion: @escaping FIRQuerySnapshotBlock) {
         
         let r_earth : Double = 6378137  // Radius of earth in Meters

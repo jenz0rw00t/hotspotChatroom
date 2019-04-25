@@ -162,9 +162,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aqd-24-qtI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aqd-24-qtI">
                                 <rect key="frame" x="0.0" y="88" width="414" height="675"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" id="Rzn-gK-lIh" customClass="ChatTableViewCell" customModule="hotspotChatroom" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rzn-gK-lIh" id="L1K-z2-Cxk">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" horizontalHuggingPriority="245" verticalHuggingPriority="245" translatesAutoresizingMaskIntoConstraints="NO" id="A54-O0-fOo">
+                                                    <rect key="frame" x="8" y="31" width="102" height="9"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="245" text="Hej allihopa!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBz-NV-c32">
+                                                            <rect key="frame" x="4" y="4" width="94" height="1"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.94245225190000004" green="0.7142567635" blue="0.49683076139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="NBz-NV-c32" firstAttribute="leading" secondItem="A54-O0-fOo" secondAttribute="leading" constant="4" id="5eZ-g0-nhH"/>
+                                                        <constraint firstAttribute="bottom" secondItem="NBz-NV-c32" secondAttribute="bottom" constant="4" id="B7U-Nf-gDY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="NBz-NV-c32" secondAttribute="trailing" constant="4" id="OXS-6n-qUO"/>
+                                                        <constraint firstItem="NBz-NV-c32" firstAttribute="top" secondItem="A54-O0-fOo" secondAttribute="top" constant="4" id="haQ-zI-T7V"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pelle:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzh-5J-KL0">
+                                                    <rect key="frame" x="8" y="4" width="39.5" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="THr-sZ-arl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" horizontalHuggingPriority="245" verticalHuggingPriority="245" translatesAutoresizingMaskIntoConstraints="NO" id="4dk-R8-FTM">
+                                                    <rect key="frame" x="304" y="15" width="102" height="14"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="245" text="Hej allihopa!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juh-gU-2as">
+                                                            <rect key="frame" x="4" y="4" width="94" height="6"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="juh-gU-2as" firstAttribute="leading" secondItem="4dk-R8-FTM" secondAttribute="leading" constant="4" id="9g7-CD-vCr"/>
+                                                        <constraint firstItem="juh-gU-2as" firstAttribute="top" secondItem="4dk-R8-FTM" secondAttribute="top" constant="4" id="akn-WL-LU1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="juh-gU-2as" secondAttribute="bottom" constant="4" id="eyj-y5-uDt"/>
+                                                        <constraint firstAttribute="trailing" secondItem="juh-gU-2as" secondAttribute="trailing" constant="4" id="t9d-Xv-ZcQ"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4dk-R8-FTM" secondAttribute="bottom" constant="4" id="1Bq-l7-xtw"/>
+                                                <constraint firstItem="4dk-R8-FTM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L1K-z2-Cxk" secondAttribute="leading" constant="140" id="2kb-3H-f3B"/>
+                                                <constraint firstItem="tzh-5J-KL0" firstAttribute="leading" secondItem="L1K-z2-Cxk" secondAttribute="leading" constant="8" id="D84-MT-7fp"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A54-O0-fOo" secondAttribute="trailing" constant="140" id="EIn-kZ-cN0"/>
+                                                <constraint firstAttribute="trailing" secondItem="4dk-R8-FTM" secondAttribute="trailing" constant="8" id="PBV-7L-poI"/>
+                                                <constraint firstItem="4dk-R8-FTM" firstAttribute="top" secondItem="L1K-z2-Cxk" secondAttribute="topMargin" constant="4" id="Rrg-ST-Vt3"/>
+                                                <constraint firstAttribute="bottom" secondItem="A54-O0-fOo" secondAttribute="bottom" constant="4" id="U8z-dU-Q3J"/>
+                                                <constraint firstItem="tzh-5J-KL0" firstAttribute="top" secondItem="L1K-z2-Cxk" secondAttribute="top" constant="4" id="gpi-H1-FQX"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tzh-5J-KL0" secondAttribute="trailing" constant="140" id="kcH-Fl-p32"/>
+                                                <constraint firstItem="A54-O0-fOo" firstAttribute="leading" secondItem="L1K-z2-Cxk" secondAttribute="leading" constant="8" id="knC-5d-bU6"/>
+                                                <constraint firstItem="A54-O0-fOo" firstAttribute="top" secondItem="tzh-5J-KL0" secondAttribute="bottom" constant="2" id="pMt-Wt-GNd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatbubbleView" destination="A54-O0-fOo" id="frJ-y0-dTy"/>
+                                            <outlet property="messageLabel" destination="NBz-NV-c32" id="oeg-1a-FMb"/>
+                                            <outlet property="sentChatbubbleView" destination="4dk-R8-FTM" id="cvZ-Az-Kec"/>
+                                            <outlet property="sentMessageLabel" destination="juh-gU-2as" id="86F-rr-jLG"/>
+                                            <outlet property="usernameLabel" destination="tzh-5J-KL0" id="ul5-qc-f5h"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="aml-aj-JN2" id="8D3-we-Jb6"/>
                                     <outlet property="delegate" destination="aml-aj-JN2" id="Cwm-cF-kit"/>
@@ -235,6 +312,7 @@
                         <segue destination="nNq-k3-E1i" kind="relationship" relationship="viewControllers" id="hc0-cn-DYa"/>
                         <segue destination="gtM-kC-nQr" kind="relationship" relationship="viewControllers" id="KU3-2Q-19k"/>
                         <segue destination="YGC-gm-zRt" kind="presentation" identifier="signInSegue" id="RRi-RT-VvB"/>
+                        <segue destination="YGC-gm-zRt" kind="presentation" identifier="signInSegueNoAnimation" animates="NO" id="ORR-yh-kg1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nl6-C3-fnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -280,4 +358,7 @@
             <point key="canvasLocation" x="1570" y="-1156"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ORR-yh-kg1"/>
+    </inferredMetricsTieBreakers>
 </document>

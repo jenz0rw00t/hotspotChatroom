@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        startListener()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(handleLogOut))
         
     }
@@ -55,6 +56,13 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if listener == nil {
+            startListener()
+        }
+        setupCurrentUser()
+    }
+    
+    func startListener() {
         listener = LogInHelper.signedInListener { (auth, user) in
             if user == nil {
                 self.tabBarController!.performSegue(withIdentifier: "signInSegue", sender: nil)
