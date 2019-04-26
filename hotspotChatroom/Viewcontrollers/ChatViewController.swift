@@ -33,6 +33,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    // Om man varit inloggad på annat konto och går in i chat igen behövs tydligen detta
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.chatTableView.reloadData()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if authListener == nil {
@@ -54,14 +60,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func sendButtonPressed(_ sender: Any) {
         guard let user = currentUser else { return }
         guard let chatroomId = chatroom?.chatroomId else { return }
-        let message = Message(username: user.username, userId: user.userId, message: messageTextField.text!, messageId: "")
+        let message = Message(username: user.username, userId: user.userId, message: messageTextField.text!, messageId: "", timestamp: Date())
         
         FirestoreHelper.addMessage(message: message, chatroomId: chatroomId) { (error) in
             if error != nil {
                 print("ADD MESSAGE ERROR: \(error!.localizedDescription)")
             }
+            self.chatTableView.reloadData()
         }
-        
+        messageTextField.text = ""
     }
     
     @IBAction func editingChangedInTextField(_ sender: UITextField) {
@@ -116,8 +123,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func startAuthListener() {
         authListener = LogInHelper.signedInListener { (auth, user) in
             if user == nil {
+                print("----------USER IS NIL----------")
                 self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
             } else if user?.uid != LogInHelper.getCurrentUserID() {
+                print("----------USER IS NOT THE SAME?----------")
                 self.currentUser = nil
             }
         }

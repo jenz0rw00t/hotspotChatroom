@@ -34,12 +34,12 @@ struct FirestoreHelper {
     
     static func addMessage(message:Message, chatroomId:String, completion: ((Error?) -> Void)?) {
         let newDocumentID = UUID().uuidString
-        let messageWithId = Message(username: message.username, userId: message.userId, message: message.message, messageId: newDocumentID)
+        let messageWithId = Message(username: message.username, userId: message.userId, message: message.message, messageId: newDocumentID, timestamp: message.timestamp)
         db.collection("chatrooms").document(chatroomId).collection("messages").document(newDocumentID).setData(messageWithId.toDictionary(), completion: completion)
     }
     
     static func chatSnapshotListener(chatroomId: String, completion: @escaping FIRQuerySnapshotBlock) -> ListenerRegistration {
-        let listener = db.collection("chatrooms").document(chatroomId).collection("messages").addSnapshotListener(completion)
+        let listener = db.collection("chatrooms").document(chatroomId).collection("messages").order(by: "timestamp").addSnapshotListener(completion)
         return listener
     }
     

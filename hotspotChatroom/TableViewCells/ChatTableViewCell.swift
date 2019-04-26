@@ -17,18 +17,20 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var sentMessageLabel: UILabel!
     
     func setMessageToCell(message: Message) {
-        usernameLabel.isHidden = false
-        chatbubbleView.isHidden = false
-        sentChatbubbleView.isHidden = true
+        isSentMessageCell(sentUI: false)
         usernameLabel.text = message.username
         messageLabel.text = message.message
     }
     
     func setSentMessageToCell(message: Message) {
-        sentChatbubbleView.isHidden = false
-        usernameLabel.isHidden = true
-        chatbubbleView.isHidden = true
+        isSentMessageCell(sentUI: true)
         sentMessageLabel.text = message.message
+    }
+    
+    func isSentMessageCell(sentUI:Bool){
+        sentChatbubbleView.isHidden = !sentUI
+        usernameLabel.isHidden = sentUI
+        chatbubbleView.isHidden = sentUI
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

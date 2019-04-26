@@ -14,6 +14,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    var currentUser: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +24,20 @@ class ProfileViewController: UIViewController {
         
     }
     
-    var currentUser: User?
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if authListener == nil {
+            startAuthListener()
+        }
+        setupCurrentUser()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        LogInHelper.removeSignInListener(listener: authListener!)
+    }
+    
+    // MARK: - Functions
     
     func setupCurrentUser() {
         guard let userId = LogInHelper.getCurrentUserID() else { return }
@@ -54,14 +69,6 @@ class ProfileViewController: UIViewController {
     
     var authListener: AuthStateDidChangeListenerHandle?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if authListener == nil {
-            startAuthListener()
-        }
-        setupCurrentUser()
-    }
-    
     func startAuthListener() {
         authListener = LogInHelper.signedInListener { (auth, user) in
             if user == nil {
@@ -70,11 +77,6 @@ class ProfileViewController: UIViewController {
             }
         }
         setupCurrentUser()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        LogInHelper.removeSignInListener(listener: authListener!)
     }
     
     // MARK: - Button functions

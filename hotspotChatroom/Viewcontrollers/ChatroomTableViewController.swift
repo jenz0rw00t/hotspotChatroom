@@ -28,6 +28,19 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if authListener == nil {
+            startAuthListener()
+        }
+        searchForNearbyChatrooms()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        LogInHelper.removeSignInListener(listener: authListener!)
+    }
+    
     // MARK: - IBActions
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -111,28 +124,17 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     
     var authListener: AuthStateDidChangeListenerHandle?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if authListener == nil {
-            startAuthListener()
-        }
-        searchForNearbyChatrooms()
-    }
-    
     func startAuthListener() {
         authListener = LogInHelper.signedInListener { (auth, user) in
             if user == nil {
+                print("----------USER IS NIL----------")
                 self.refreshControl?.endRefreshing()
                 self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
             } else if user?.uid != LogInHelper.getCurrentUserID() {
+                print("----------USER IS NOT THE SAME?----------")
                 self.currentUser = nil
             }
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        LogInHelper.removeSignInListener(listener: authListener!)
     }
 
     // MARK: - Table view data source
