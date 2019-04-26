@@ -16,7 +16,7 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     var chatrooms = [Chatroom]()
     var currentUser: User?
     let locationManager = CLLocationManager()
-    let proximityToChatroom: Double = 50 // How close in meters you need to be able to join a chatroom
+    let proximityToChatroom: Double = 40 // How close in meters you need to be able to join a chatroom
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,10 +70,23 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
                 print("----------USER IS NIL----------")
                 self.refreshControl?.endRefreshing()
                 self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
-            } else if user?.uid != LogInHelper.getCurrentUserID() {
+            } else if user?.uid != self.currentUser?.userId {
                 print("----------USER IS NOT THE SAME?----------")
-                self.currentUser = nil
+                self.setCorrectUser(userId: user!.uid)
             }
+        }
+    }
+    
+    func setCorrectUser(userId:String){
+        FirestoreHelper.getUser(userId: userId) { (snapshot, error) in
+            if error != nil {
+                print("GET USER ERROR: \(error!.localizedDescription)")
+                return
+            }
+            guard let snap = snapshot else { return }
+            guard let data = snap.data() else { return }
+            let user = User(data: data)
+            self.currentUser = user
         }
     }
     

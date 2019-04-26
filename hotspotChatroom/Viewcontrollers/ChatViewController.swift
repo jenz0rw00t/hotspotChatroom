@@ -28,7 +28,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tabBarController?.tabBar.isHidden = true
 
         startAuthListener()
-        getCurrentUser()
         startChatListener()
         
         navigationItem.title = chatroom?.name
@@ -170,25 +169,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         authListener = LogInHelper.signedInListener { (auth, user) in
             if user == nil {
                 print("----------USER IS NIL----------")
+                self.removeFromParent()
                 self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
-            } else if user?.uid != LogInHelper.getCurrentUserID() {
+            } else if user?.uid != self.currentUser?.userId {
                 print("----------USER IS NOT THE SAME?----------")
-                self.currentUser = nil
+                print("uid: \(user?.uid ?? "nil")")
+                print("userId: \(self.currentUser?.userId ?? "nil")")
             }
-        }
-    }
-    
-    func getCurrentUser() {
-        guard let userId = LogInHelper.getCurrentUserID() else { return }
-        FirestoreHelper.getUser(userId: userId) { (snapshot, error) in
-            if error != nil {
-                print("GET USER ERROR: \(error!.localizedDescription)")
-                return
-            }
-            guard let snap = snapshot else { return }
-            guard let data = snap.data() else { return }
-            let user = User(data: data)
-            self.currentUser = user
         }
     }
     
