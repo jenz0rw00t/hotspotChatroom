@@ -24,8 +24,9 @@ class SignUpViewController: UIViewController {
         usernameTextField.becomeFirstResponder()
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-
     }
+    
+    // Keyboard handling
     
     @objc func dismissKeyboard() {
         usernameTextField.endEditing(true)

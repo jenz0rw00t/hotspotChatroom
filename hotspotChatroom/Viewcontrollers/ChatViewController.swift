@@ -42,21 +42,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))) 
     }
     
-    @objc func dismissKeyboard() {
-        messageTextField.endEditing(true)
-    }
-    
-    @objc func handleKeyboardNotification(notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            
-            let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
-            
-            bottomConstraint.constant = isKeyboardShowing ? -keyboardHeight : -16
-        }
-    }
-    
     // Om man varit inloggad på annat konto och går in i chat igen behövs tydligen detta
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -92,7 +77,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             self.chatTableView.reloadData()
         }
-        messageTextField.text = ""
+        messageTextField.text = nil
     }
     
     @IBAction func editingChangedInTextField(_ sender: UITextField) {
@@ -104,7 +89,54 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // MARK: - Functions
+    // MARK: - Keyboard functions and animations
+    
+    @objc func dismissKeyboard() {
+        messageTextField.endEditing(true)
+    }
+    
+    @objc func handleKeyboardNotification(notification: Notification) {
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
+            
+            let bottomSafeAreaHeight = getBottomSafeAreaHeight()
+            
+            bottomConstraint.constant = isKeyboardShowing ? -keyboardHeight+bottomSafeAreaHeight : 0
+            
+            animateWithKeyboard(isKeyboardShowing: isKeyboardShowing)
+        }
+    }
+    
+    func animateWithKeyboard(isKeyboardShowing: Bool) {
+        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut , animations: {
+            self.view.layoutIfNeeded()
+        }) { (completed) in
+            if isKeyboardShowing {
+                if self.messages.count > 0 {
+                    let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
+                    self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                }
+            }
+            
+        }
+    }
+    
+    func getBottomSafeAreaHeight() -> CGFloat {
+        var bottomSafeAreaHeight: CGFloat = 0
+        
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.windows[0]
+            let safeFrame = window.safeAreaLayoutGuide.layoutFrame
+            bottomSafeAreaHeight = window.frame.maxY - safeFrame.maxY
+        }
+        return bottomSafeAreaHeight
+    }
+    
+    // MARK: - Chatlistener
     
     var chatListener: ListenerRegistration?
     
@@ -119,10 +151,31 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if (diff.type == .added) {
                     if let message = Message(data: diff.document.data()) {
                         self.messages.append(message)
+                        let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
+                        self.chatTableView.insertRows(at: [indexPath], with: .right)
+                        self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                     }
                 }
             })
-            self.chatTableView.reloadData()
+//            self.chatTableView.reloadData()
+//            let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
+//            self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+    }
+    
+    // MARK: - User and auth functions
+    
+    var authListener: AuthStateDidChangeListenerHandle?
+    
+    func startAuthListener() {
+        authListener = LogInHelper.signedInListener { (auth, user) in
+            if user == nil {
+                print("----------USER IS NIL----------")
+                self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
+            } else if user?.uid != LogInHelper.getCurrentUserID() {
+                print("----------USER IS NOT THE SAME?----------")
+                self.currentUser = nil
+            }
         }
     }
     
@@ -140,22 +193,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // MARK: - viewWillAppear signed in listener
-    
-    var authListener: AuthStateDidChangeListenerHandle?
-    
-    func startAuthListener() {
-        authListener = LogInHelper.signedInListener { (auth, user) in
-            if user == nil {
-                print("----------USER IS NIL----------")
-                self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
-            } else if user?.uid != LogInHelper.getCurrentUserID() {
-                print("----------USER IS NOT THE SAME?----------")
-                self.currentUser = nil
-            }
-        }
-    }
-    
     // MARK: UITableViewDataSource
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -169,20 +206,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatTableViewCell
-     
         let userId = currentUser?.userId
         let message = messages[indexPath.row]
         
         if userId == message.userId {
-            cell.setSentMessageToCell(message: message)
-        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sentCell", for: indexPath) as! SentMessageTableViewCell
             cell.setMessageToCell(message: message)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "receivedCell", for: indexPath) as! ReceivedMessageTableViewCell
+            cell.setMessageToCell(message: message)
+            return cell
         }
-     
-        return cell
+
     }
- 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(messages[indexPath.row].message)

@@ -14,7 +14,8 @@
 		A20EAAB3225B3AD00067A9BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20EAAB1225B3AD00067A9BD /* LaunchScreen.storyboard */; };
 		A20EAABB225B3B590067A9BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20EAABA225B3B590067A9BD /* GoogleService-Info.plist */; };
 		A214CEB222707F7800A94C44 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A214CEB122707F7800A94C44 /* ChatViewController.swift */; };
-		A214CEB42271A18F00A94C44 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A214CEB32271A18F00A94C44 /* ChatTableViewCell.swift */; };
+		A214F6B12273690E00E010F0 /* SentMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A214F6B02273690E00E010F0 /* SentMessageTableViewCell.swift */; };
+		A214F6B32273693300E010F0 /* ReceivedMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A214F6B22273693300E010F0 /* ReceivedMessageTableViewCell.swift */; };
 		A2815372225E1E7E00D3BA3C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2815371225E1E7E00D3BA3C /* SignInViewController.swift */; };
 		A2815374225E1E8E00D3BA3C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */; };
 		A281537B225E215200D3BA3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A281537A225E215200D3BA3C /* User.swift */; };
@@ -40,7 +41,8 @@
 		A20EAAB4225B3AD00067A9BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20EAABA225B3B590067A9BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A214CEB122707F7800A94C44 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		A214CEB32271A18F00A94C44 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		A214F6B02273690E00E010F0 /* SentMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentMessageTableViewCell.swift; sourceTree = "<group>"; };
+		A214F6B22273693300E010F0 /* ReceivedMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceivedMessageTableViewCell.swift; sourceTree = "<group>"; };
 		A2815371225E1E7E00D3BA3C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		A2815373225E1E8E00D3BA3C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A281537A225E215200D3BA3C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -148,7 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				A28153B3226B4FB700D3BA3C /* ChatroomTableViewCell.swift */,
-				A214CEB32271A18F00A94C44 /* ChatTableViewCell.swift */,
+				A214F6B02273690E00E010F0 /* SentMessageTableViewCell.swift */,
+				A214F6B22273693300E010F0 /* ReceivedMessageTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -314,10 +317,11 @@
 				A28153B1226B484D00D3BA3C /* Chatroom.swift in Sources */,
 				A281537D225F208700D3BA3C /* LogInHelper.swift in Sources */,
 				A281537F225F210E00D3BA3C /* FirestoreHelper.swift in Sources */,
+				A214F6B12273690E00E010F0 /* SentMessageTableViewCell.swift in Sources */,
 				A28153A7225FE61800D3BA3C /* ProfileViewController.swift in Sources */,
 				A28153B6226F0A0200D3BA3C /* Message.swift in Sources */,
 				A214CEB222707F7800A94C44 /* ChatViewController.swift in Sources */,
-				A214CEB42271A18F00A94C44 /* ChatTableViewCell.swift in Sources */,
+				A214F6B32273693300E010F0 /* ReceivedMessageTableViewCell.swift in Sources */,
 				A28153A3225F5C2000D3BA3C /* Alert.swift in Sources */,
 				A28153B4226B4FB700D3BA3C /* ChatroomTableViewCell.swift in Sources */,
 			);

@@ -48,7 +48,7 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
         createChatroomAlert()
     }
     
-    // MARK: - Functions
+    // MARK: - RefreshControl
     
     func setupRefreshControl() {
         refreshControl = UIRefreshControl()
@@ -58,6 +58,23 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     
     @objc func dragDownUpdate() {
         searchForNearbyChatrooms()
+    }
+    
+    // MARK: - User and auth functions
+    
+    var authListener: AuthStateDidChangeListenerHandle?
+    
+    func startAuthListener() {
+        authListener = LogInHelper.signedInListener { (auth, user) in
+            if user == nil {
+                print("----------USER IS NIL----------")
+                self.refreshControl?.endRefreshing()
+                self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
+            } else if user?.uid != LogInHelper.getCurrentUserID() {
+                print("----------USER IS NOT THE SAME?----------")
+                self.currentUser = nil
+            }
+        }
     }
     
     func getCurrentUser() {
@@ -73,6 +90,8 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
             self.currentUser = user
         }
     }
+    
+    // MARK: - Create chatroom and search for chatroom functions
     
     func createChatroomAlert() {
         
@@ -118,23 +137,6 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
             }
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
-        }
-    }
-    
-    // MARK: - viewWillAppear signed in listener
-    
-    var authListener: AuthStateDidChangeListenerHandle?
-    
-    func startAuthListener() {
-        authListener = LogInHelper.signedInListener { (auth, user) in
-            if user == nil {
-                print("----------USER IS NIL----------")
-                self.refreshControl?.endRefreshing()
-                self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
-            } else if user?.uid != LogInHelper.getCurrentUserID() {
-                print("----------USER IS NOT THE SAME?----------")
-                self.currentUser = nil
-            }
         }
     }
 

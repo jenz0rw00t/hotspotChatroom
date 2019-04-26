@@ -22,10 +22,14 @@ class SignInViewController: UIViewController {
         
     }
     
+    // MARK: - Keyboard handling
+    
     @objc func dismissKeyboard() {
         emailTextField.endEditing(true)
         passwordTextField.endEditing(true)
     }
+    
+    // MARK: - IBActions
     
     @IBAction func signInButtonPressed(_ sender: Any) {
         guard let email = emailTextField.text,

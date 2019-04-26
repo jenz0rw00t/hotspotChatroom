@@ -37,7 +37,19 @@ class ProfileViewController: UIViewController {
         LogInHelper.removeSignInListener(listener: authListener!)
     }
     
-    // MARK: - Functions
+    // MARK: - User functions
+    
+    var authListener: AuthStateDidChangeListenerHandle?
+    
+    func startAuthListener() {
+        authListener = LogInHelper.signedInListener { (auth, user) in
+            if user == nil {
+                self.tabBarController!.performSegue(withIdentifier: "signInSegue", sender: nil)
+                self.clearLabels()
+            }
+        }
+        setupCurrentUser()
+    }
     
     func setupCurrentUser() {
         guard let userId = LogInHelper.getCurrentUserID() else { return }
@@ -55,6 +67,18 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func updateUsername(newUsername: String) {
+        FirestoreHelper.updateUsername(userId: currentUser!.userId, userName: newUsername, completion: { (error) in
+            if error != nil {
+                Alert.showErrorAlert(on: self, error: error!)
+                return
+            }
+            self.setupCurrentUser()
+        })
+    }
+    
+    // MARK: - UI Setup functions
+    
     func setUserToUI() {
         usernameLabel.text = currentUser?.username
         emailLabel.text = currentUser?.email
@@ -65,21 +89,7 @@ class ProfileViewController: UIViewController {
         emailLabel.text = ""
     }
     
-    // MARK: - viewWillAppear signed in listener
-    
-    var authListener: AuthStateDidChangeListenerHandle?
-    
-    func startAuthListener() {
-        authListener = LogInHelper.signedInListener { (auth, user) in
-            if user == nil {
-                self.tabBarController!.performSegue(withIdentifier: "signInSegue", sender: nil)
-                self.clearLabels()
-            }
-        }
-        setupCurrentUser()
-    }
-    
-    // MARK: - Button functions
+    // MARK: - Button functions and IBActions
     
     @IBAction func editUsernamePressed(_ sender: Any) {
         guard let user = currentUser else { return }
@@ -94,16 +104,6 @@ class ProfileViewController: UIViewController {
             self.updateUsername(newUsername: newUsername)
         }))
         present(alert, animated: true, completion: nil)
-    }
-    
-    func updateUsername(newUsername: String) {
-        FirestoreHelper.updateUsername(userId: currentUser!.userId, userName: newUsername, completion: { (error) in
-            if error != nil {
-                Alert.showErrorAlert(on: self, error: error!)
-                return
-            }
-            self.setupCurrentUser()
-        })
     }
     
     @objc func handleLogOut() {
