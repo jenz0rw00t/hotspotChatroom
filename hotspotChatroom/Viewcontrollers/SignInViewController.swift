@@ -18,6 +18,13 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         hideSpinner()
         
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+    }
+    
+    @objc func dismissKeyboard() {
+        emailTextField.endEditing(true)
+        passwordTextField.endEditing(true)
     }
     
     @IBAction func signInButtonPressed(_ sender: Any) {

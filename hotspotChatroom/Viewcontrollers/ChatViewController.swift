@@ -19,9 +19,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tabBarController?.tabBar.isHidden = true
 
         startAuthListener()
         getCurrentUser()
@@ -31,6 +35,26 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationItem.title = chatroom?.name
         sendButton.isEnabled = false
         
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))) 
+    }
+    
+    @objc func dismissKeyboard() {
+        messageTextField.endEditing(true)
+    }
+    
+    @objc func handleKeyboardNotification(notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
+            
+            bottomConstraint.constant = isKeyboardShowing ? -keyboardHeight : -16
+        }
     }
     
     // Om man varit inloggad på annat konto och går in i chat igen behövs tydligen detta

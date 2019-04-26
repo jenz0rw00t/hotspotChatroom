@@ -30,6 +30,7 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
         if authListener == nil {
             startAuthListener()
         }

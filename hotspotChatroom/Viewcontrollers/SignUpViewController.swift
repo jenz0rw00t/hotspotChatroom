@@ -23,6 +23,14 @@ class SignUpViewController: UIViewController {
         hideSpinner()
         usernameTextField.becomeFirstResponder()
         
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+
+    }
+    
+    @objc func dismissKeyboard() {
+        usernameTextField.endEditing(true)
+        emailTextField.endEditing(true)
+        passwordTextField.endEditing(true)
     }
     
     // MARK: - IBActions
