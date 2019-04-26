@@ -29,7 +29,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         startAuthListener()
         getCurrentUser()
-        
         startChatListener()
         
         navigationItem.title = chatroom?.name
@@ -152,7 +151,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if let message = Message(data: diff.document.data()) {
                         self.messages.append(message)
                         let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
-                        self.chatTableView.insertRows(at: [indexPath], with: .right)
+                        self.chatTableView.insertRows(at: [indexPath], with: .fade)
                         self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                     }
                 }

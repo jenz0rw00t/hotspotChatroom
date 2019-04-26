@@ -17,7 +17,7 @@ class ReceivedMessageTableViewCell: UITableViewCell {
     
     func setMessageToCell(message: Message) {
         let timestamp = formatDate(date: message.timestamp)
-        usernameLabel.text = message.username
+        usernameLabel.text = "\(message.username):"
         messageLabel.text = message.message
         timestampLabel.text = timestamp
     }
@@ -28,8 +28,12 @@ class ReceivedMessageTableViewCell: UITableViewCell {
     }
     
     func setUpBubbles() {
-        chatBubbleView.layer.masksToBounds = true
-        chatBubbleView.layer.cornerRadius = 15
+        chatBubbleView.layer.masksToBounds = false
+        chatBubbleView.layer.cornerRadius = 18
+        chatBubbleView.layer.shadowColor = UIColor.lightGray.cgColor
+        chatBubbleView.layer.shadowOffset = CGSize.zero
+        chatBubbleView.layer.shadowOpacity = 0.3
+        chatBubbleView.layer.shadowRadius = 4
     }
     
     func formatDate(date: Date) -> String {
