@@ -8,10 +8,17 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
-class CurrentUserHandler: NSObject {
+protocol CurrentUserHandlerDelegate {
+    func currentUserUpdated()
+}
+
+final class CurrentUserHandler: NSObject {
     
     var currentUser: User?
+    
+    var delegate: CurrentUserHandlerDelegate?
     
     // MARK: - Singleton constructor
     
@@ -28,6 +35,10 @@ class CurrentUserHandler: NSObject {
         return currentUser
     }
     
+    func updateUser() {
+        getCurrentUser()
+    }
+    
     func signOut() {
         LogInHelper.signOutUser()
         currentUser = nil
@@ -40,10 +51,11 @@ class CurrentUserHandler: NSObject {
     private func startAuthListener() {
         authListener = LogInHelper.signedInListener { (auth, user) in
             if user == nil {
-                print("----------USER IS NIL----------")
+                print("---CURRENT USER HANDLER: USER IS NIL")
                 self.currentUser = nil
             } else if user?.uid != self.currentUser?.userId {
-                print("----------USER IS NOT THE SAME?----------")
+                print("---CURRENT USER HANDLER: USER IS NOT THE SAME?")
+                print("user?.uid = \(user?.uid ?? "nil") currentUser?.userId = \(self.currentUser?.userId ?? "nil")")
                 self.setCorrectUser(userId: user!.uid)
             }
         }
@@ -59,6 +71,7 @@ class CurrentUserHandler: NSObject {
             guard let data = snap.data() else { return }
             let user = User(data: data)
             self.currentUser = user
+            self.delegate?.currentUserUpdated()
         }
     }
     
@@ -73,6 +86,7 @@ class CurrentUserHandler: NSObject {
             guard let data = snap.data() else { return }
             let user = User(data: data)
             self.currentUser = user
+            self.delegate?.currentUserUpdated()
         }
     }
     

@@ -27,7 +27,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tabBarController?.tabBar.isHidden = true
 
-        startAuthListener()
+        currentUser = CurrentUserHandler.shared.currentUser
         startChatListener()
         
         navigationItem.title = chatroom?.name
@@ -41,16 +41,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // Om man varit inloggad på annat konto och går in i chat igen behövs tydligen detta
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.chatTableView.reloadData()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        self.chatTableView.reloadData()
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if authListener == nil {
-            startAuthListener()
-        }
+        currentUser = CurrentUserHandler.shared.currentUser
         if chatListener == nil {
             startChatListener()
         }
@@ -58,7 +56,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        LogInHelper.removeSignInListener(listener: authListener!)
         chatListener?.remove()
     }
     
@@ -158,24 +155,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 //            self.chatTableView.reloadData()
 //            let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
 //            self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        }
-    }
-    
-    // MARK: - User and auth functions
-    
-    var authListener: AuthStateDidChangeListenerHandle?
-    
-    func startAuthListener() {
-        authListener = LogInHelper.signedInListener { (auth, user) in
-            if user == nil {
-                print("----------USER IS NIL----------")
-                self.removeFromParent()
-                self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
-            } else if user?.uid != self.currentUser?.userId {
-                print("----------USER IS NOT THE SAME?----------")
-                print("uid: \(user?.uid ?? "nil")")
-                print("userId: \(self.currentUser?.userId ?? "nil")")
-            }
         }
     }
     

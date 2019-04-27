@@ -20,9 +20,9 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        startAuthListener()
-        getCurrentUser()
+        
+        currentUser = CurrentUserHandler.shared.currentUser
+        
         setupRefreshControl()
         checkLocationServices()
         
@@ -31,15 +31,12 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-        if authListener == nil {
-            startAuthListener()
+        currentUser = CurrentUserHandler.shared.currentUser
+        if LogInHelper.getCurrentUserID() == nil {
+            self.refreshControl?.endRefreshing()
+            self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
         }
         searchForNearbyChatrooms()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        LogInHelper.removeSignInListener(listener: authListener!)
     }
     
     // MARK: - IBActions
@@ -58,50 +55,6 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
     
     @objc func dragDownUpdate() {
         searchForNearbyChatrooms()
-    }
-    
-    // MARK: - User and auth functions
-    
-    var authListener: AuthStateDidChangeListenerHandle?
-    
-    func startAuthListener() {
-        authListener = LogInHelper.signedInListener { (auth, user) in
-            if user == nil {
-                print("----------USER IS NIL----------")
-                self.refreshControl?.endRefreshing()
-                self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
-            } else if user?.uid != self.currentUser?.userId {
-                print("----------USER IS NOT THE SAME?----------")
-                self.setCorrectUser(userId: user!.uid)
-            }
-        }
-    }
-    
-    func setCorrectUser(userId:String){
-        FirestoreHelper.getUser(userId: userId) { (snapshot, error) in
-            if error != nil {
-                print("GET USER ERROR: \(error!.localizedDescription)")
-                return
-            }
-            guard let snap = snapshot else { return }
-            guard let data = snap.data() else { return }
-            let user = User(data: data)
-            self.currentUser = user
-        }
-    }
-    
-    func getCurrentUser() {
-        guard let userId = LogInHelper.getCurrentUserID() else { return }
-        FirestoreHelper.getUser(userId: userId) { (snapshot, error) in
-            if error != nil {
-                print("GET USER ERROR: \(error!.localizedDescription)")
-                return
-            }
-            guard let snap = snapshot else { return }
-            guard let data = snap.data() else { return }
-            let user = User(data: data)
-            self.currentUser = user
-        }
     }
     
     // MARK: - Create chatroom and search for chatroom functions
@@ -185,7 +138,6 @@ class ChatroomTableViewController: UITableViewController, CLLocationManagerDeleg
         if segue.identifier == "chatroomToChat" {
             if let chatVC = segue.destination as? ChatViewController {
                 chatVC.chatroom = selectedChatroom
-                chatVC.currentUser = currentUser
             }
         }
     }

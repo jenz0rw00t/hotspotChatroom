@@ -9,71 +9,40 @@
 import UIKit
 import FirebaseAuth
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, CurrentUserHandlerDelegate {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    var currentUser: User?
+    var currentUser: User? {
+        didSet {
+            setUserToUI()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        startAuthListener()
+        
+        CurrentUserHandler.shared.delegate = self
+        currentUser = CurrentUserHandler.shared.currentUser
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(handleLogOut))
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if authListener == nil {
-            startAuthListener()
-        }
-        setupCurrentUser()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        LogInHelper.removeSignInListener(listener: authListener!)
-    }
-    
-    // MARK: - User functions
-    
-    var authListener: AuthStateDidChangeListenerHandle?
-    
-    func startAuthListener() {
-        authListener = LogInHelper.signedInListener { (auth, user) in
-            if user == nil {
-                self.tabBarController!.performSegue(withIdentifier: "signInSegue", sender: nil)
-                self.clearLabels()
-            }
-        }
-        setupCurrentUser()
-    }
-    
-    func setupCurrentUser() {
-        guard let userId = LogInHelper.getCurrentUserID() else { return }
-        
-        FirestoreHelper.getUser(userId: userId) { (snapshot, error) in
-            if error != nil {
-                print("GET USER ERROR: \(error!.localizedDescription)")
-                return
-            }
-            guard let snap = snapshot else { return }
-            guard let data = snap.data() else { return }
-            let user = User(data: data)
-            self.currentUser = user
-            self.setUserToUI()
-        }
+        currentUser = CurrentUserHandler.shared.currentUser
     }
     
     func updateUsername(newUsername: String) {
-        FirestoreHelper.updateUsername(userId: currentUser!.userId, userName: newUsername, completion: { (error) in
+        guard let userId = currentUser?.userId else { return }
+        FirestoreHelper.updateUsername(userId: userId, userName: newUsername, completion: { (error) in
             if error != nil {
                 Alert.showErrorAlert(on: self, error: error!)
                 return
             }
-            self.setupCurrentUser()
+            CurrentUserHandler.shared.updateUser()
         })
     }
     
@@ -108,10 +77,14 @@ class ProfileViewController: UIViewController {
     
     @objc func handleLogOut() {
         Alert.showOneOptionAndCancelAlert(on: self, title: "Are you sure?", message: nil, buttonText: "Sign Out") { (_) in
-            LogInHelper.signOutUser()
+            CurrentUserHandler.shared.signOut()
             self.tabBarController!.performSegue(withIdentifier: "signInSegue", sender: nil)
             self.clearLabels()
         }
+    }
+    
+    func currentUserUpdated() {
+        currentUser = CurrentUserHandler.shared.currentUser
     }
 
 }

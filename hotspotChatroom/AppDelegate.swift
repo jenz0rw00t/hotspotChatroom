@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
         
+        // Start CurrentUserHandler
+        CurrentUserHandler.shared
+        
         return true
     }
 
