@@ -35,6 +35,7 @@ class SignInViewController: UIViewController {
         guard let email = emailTextField.text,
             let password = passwordTextField.text
         else { return }
+        dismissKeyboard()
         showSpinner()
         LogInHelper.signInUser(email: email, password: password) { (authResult, error) in
             if error != nil {

@@ -49,6 +49,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         currentUser = CurrentUserHandler.shared.currentUser
+        if LogInHelper.getCurrentUserID() == nil {
+            self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
+        }
         if chatListener == nil {
             startChatListener()
         }
@@ -152,9 +155,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
             })
-//            self.chatTableView.reloadData()
-//            let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
-//            self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
     
@@ -179,6 +179,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             previousMessage = messages[indexPath.row-1]
         }
         
+        // Check if the message is sent by the current user
         if userId == message.userId {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sentCell", for: indexPath) as! SentMessageTableViewCell
             cell.setMessageToCell(message: message)
@@ -186,6 +187,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "receivedCell", for: indexPath) as! ReceivedMessageTableViewCell
             
+            // Check if the message was sent by the same user that sent the previous message
             if previousMessage?.userId == message.userId {
                 cell.setSameUsernameMessage(message: message)
             } else {
@@ -197,8 +199,5 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(messages[indexPath.row].message)
-    }
 
 }

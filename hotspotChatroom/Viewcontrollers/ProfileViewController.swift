@@ -33,6 +33,9 @@ class ProfileViewController: UIViewController, CurrentUserHandlerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         currentUser = CurrentUserHandler.shared.currentUser
+        if LogInHelper.getCurrentUserID() == nil {
+            self.tabBarController!.performSegue(withIdentifier: "signInSegueNoAnimation", sender: nil)
+        }
     }
     
     func updateUsername(newUsername: String) {
@@ -82,6 +85,8 @@ class ProfileViewController: UIViewController, CurrentUserHandlerDelegate {
             self.clearLabels()
         }
     }
+    
+    // MARK: - CurrentUserHandlerDelegate functions
     
     func currentUserUpdated() {
         currentUser = CurrentUserHandler.shared.currentUser

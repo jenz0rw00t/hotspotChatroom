@@ -50,6 +50,7 @@ class SignUpViewController: UIViewController {
             let username = usernameTextField.text
         else { return }
         
+        dismissKeyboard()
         showSpinner()
         
         LogInHelper.signUpUser(email: email, password: password) { (authResult, error) in

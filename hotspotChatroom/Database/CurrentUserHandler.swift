@@ -26,6 +26,7 @@ final class CurrentUserHandler: NSObject {
     
     private override init() {
         super .init()
+        getCurrentUser()
         startAuthListener()
     }
     
@@ -72,6 +73,7 @@ final class CurrentUserHandler: NSObject {
             let user = User(data: data)
             self.currentUser = user
             self.delegate?.currentUserUpdated()
+            print("---CURRENT USER HANDLER: USER IS UPDATED FROM setCorrectUser()")
         }
     }
     
@@ -87,6 +89,7 @@ final class CurrentUserHandler: NSObject {
             let user = User(data: data)
             self.currentUser = user
             self.delegate?.currentUserUpdated()
+            print("---CURRENT USER HANDLER: USER IS UPDATED FROM getCurrentUser()")
         }
     }
     

@@ -140,7 +140,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Chatrooms" id="2be-Wk-pZ2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RyL-F2-afU">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="baseline_add_location_black_24pt_1x" id="RyL-F2-afU">
                             <connections>
                                 <action selector="addButtonPressed:" destination="7fi-B1-1cP" id="pHt-sr-NVH"/>
                             </connections>
@@ -174,16 +174,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEE-x0-OOF">
-                                                    <rect key="frame" x="16" y="4" width="42" height="17"/>
+                                                    <rect key="frame" x="16" y="2" width="42" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" horizontalHuggingPriority="240" verticalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="u7F-76-Fng">
-                                                    <rect key="frame" x="16" y="25" width="89" height="51"/>
+                                                    <rect key="frame" x="16" y="21" width="89" height="55"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="245" verticalHuggingPriority="245" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAS-Xc-o76">
-                                                            <rect key="frame" x="10" y="10" width="69" height="31"/>
+                                                            <rect key="frame" x="10" y="10" width="69" height="35"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -197,8 +197,8 @@
                                                         <constraint firstItem="fAS-Xc-o76" firstAttribute="leading" secondItem="u7F-76-Fng" secondAttribute="leading" constant="10" id="qZM-5y-vUT"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCN-3b-fAZ">
-                                                    <rect key="frame" x="107" y="62.5" width="49" height="13.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCN-3b-fAZ">
+                                                    <rect key="frame" x="107" y="62.5" width="31.5" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -210,9 +210,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="u7F-76-Fng" secondAttribute="bottom" constant="4" id="JJd-7m-Bal"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UEE-x0-OOF" secondAttribute="trailing" constant="140" id="P7y-XC-19r"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="u7F-76-Fng" secondAttribute="trailing" constant="140" id="TWl-GV-VSd"/>
-                                                <constraint firstItem="UEE-x0-OOF" firstAttribute="top" secondItem="B0s-mM-01A" secondAttribute="top" constant="4" id="bam-KA-w8n"/>
+                                                <constraint firstItem="UEE-x0-OOF" firstAttribute="top" secondItem="B0s-mM-01A" secondAttribute="top" constant="2" id="bam-KA-w8n"/>
                                                 <constraint firstItem="UEE-x0-OOF" firstAttribute="leading" secondItem="B0s-mM-01A" secondAttribute="leading" constant="16" id="iZq-ps-ZhQ"/>
-                                                <constraint firstItem="u7F-76-Fng" firstAttribute="top" secondItem="UEE-x0-OOF" secondAttribute="bottom" constant="4" id="sTm-re-TUD"/>
+                                                <constraint firstItem="u7F-76-Fng" firstAttribute="top" secondItem="UEE-x0-OOF" secondAttribute="bottom" constant="2" id="sTm-re-TUD"/>
                                                 <constraint firstItem="sCN-3b-fAZ" firstAttribute="leading" secondItem="u7F-76-Fng" secondAttribute="trailing" constant="2" id="sfH-rT-3tv"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -364,7 +364,7 @@
         <scene sceneID="cAy-Py-XJ3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nNq-k3-E1i" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chat" image="speech_buble" id="M0I-hJ-lkJ"/>
+                    <tabBarItem key="tabBarItem" title="Chat" image="baseline_forum_black_24pt_1x" id="M0I-hJ-lkJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WgM-qr-R9E">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -383,7 +383,7 @@
         <scene sceneID="gdj-Ds-eOP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gtM-kC-nQr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="user_male" id="6P3-XO-i3q"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="baseline_account_box_black_24pt_1x" id="6P3-XO-i3q"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CIO-hb-aVG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -400,10 +400,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="speech_buble" width="30" height="30"/>
-        <image name="user_male" width="30" height="30"/>
+        <image name="baseline_account_box_black_24pt_1x" width="24" height="24"/>
+        <image name="baseline_add_location_black_24pt_1x" width="24" height="24"/>
+        <image name="baseline_forum_black_24pt_1x" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ORR-yh-kg1"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
