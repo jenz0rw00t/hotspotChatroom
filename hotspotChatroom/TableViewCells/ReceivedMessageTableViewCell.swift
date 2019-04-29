@@ -22,6 +22,14 @@ class ReceivedMessageTableViewCell: UITableViewCell {
         timestampLabel.text = timestamp
     }
     
+    func setSameUsernameMessage(message: Message) {
+        let timestamp = formatDate(date: message.timestamp)
+        usernameLabel.text = nil
+        messageLabel.text = message.message
+        timestampLabel.text = timestamp
+        layoutIfNeeded()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpBubbles()
@@ -49,9 +57,10 @@ class ReceivedMessageTableViewCell: UITableViewCell {
             dateString = dateFormatter.string(from: date)
         } else if isYesterday {
             dateFormatter.dateFormat = "HH:mm"
-            dateString = "Yesterday:\(dateFormatter.string(from: date))"
+            dateString = "Yesterday, \(dateFormatter.string(from: date))"
         } else {
-            dateFormatter.dateFormat = "E dd/MM/yyyy"
+            dateFormatter.dateFormat = "E dd/MM"
+            dateString = dateFormatter.string(from: date)
         }
         
         return dateString

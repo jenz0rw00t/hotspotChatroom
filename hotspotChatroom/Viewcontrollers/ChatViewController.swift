@@ -173,6 +173,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let userId = currentUser?.userId
         let message = messages[indexPath.row]
+        var previousMessage: Message? = nil
+        
+        if indexPath.row-1>=0 {
+            previousMessage = messages[indexPath.row-1]
+        }
         
         if userId == message.userId {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sentCell", for: indexPath) as! SentMessageTableViewCell
@@ -180,7 +185,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "receivedCell", for: indexPath) as! ReceivedMessageTableViewCell
-            cell.setMessageToCell(message: message)
+            
+            if previousMessage?.userId == message.userId {
+                cell.setSameUsernameMessage(message: message)
+            } else {
+                cell.setMessageToCell(message: message)
+            }
+            
             return cell
         }
 
