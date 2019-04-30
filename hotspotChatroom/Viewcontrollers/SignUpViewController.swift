@@ -10,15 +10,19 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var usernameTextField: CustomSignInTextField!
+    @IBOutlet weak var emailTextField: CustomSignInTextField!
+    @IBOutlet weak var passwordTextField: CustomSignInTextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        usernameTextField.setIcon(#imageLiteral(resourceName: "baseline_person_black_24pt_1x"))
+        emailTextField.setIcon(#imageLiteral(resourceName: "message"))
+        passwordTextField.setIcon(#imageLiteral(resourceName: "lock"))
+        
         signUpButton.isEnabled = false
         hideSpinner()
         usernameTextField.becomeFirstResponder()
@@ -77,6 +81,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
+        dismissKeyboard()
         dismiss(animated: true, completion: nil)
     }
     

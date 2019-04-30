@@ -29,6 +29,8 @@
 		A28153B4226B4FB700D3BA3C /* ChatroomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153B3226B4FB700D3BA3C /* ChatroomTableViewCell.swift */; };
 		A28153B6226F0A0200D3BA3C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28153B5226F0A0200D3BA3C /* Message.swift */; };
 		A2FE3CEB2273BD4E00008B9D /* CurrentUserHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE3CEA2273BD4E00008B9D /* CurrentUserHandler.swift */; };
+		A2FE3CEF227887FE00008B9D /* CustomWideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE3CEE227887FE00008B9D /* CustomWideButton.swift */; };
+		A2FE3CF12278883E00008B9D /* CustomSignInTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FE3CF02278883E00008B9D /* CustomSignInTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		A28153B3226B4FB700D3BA3C /* ChatroomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomTableViewCell.swift; sourceTree = "<group>"; };
 		A28153B5226F0A0200D3BA3C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		A2FE3CEA2273BD4E00008B9D /* CurrentUserHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserHandler.swift; sourceTree = "<group>"; };
+		A2FE3CEE227887FE00008B9D /* CustomWideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWideButton.swift; sourceTree = "<group>"; };
+		A2FE3CF02278883E00008B9D /* CustomSignInTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignInTextField.swift; sourceTree = "<group>"; };
 		E00683892074D6499104B5EA /* Pods-hotspotChatroom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hotspotChatroom.release.xcconfig"; path = "Target Support Files/Pods-hotspotChatroom/Pods-hotspotChatroom.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +102,7 @@
 				A2815370225E1E2800D3BA3C /* Database */,
 				A281536E225E1DBB00D3BA3C /* Viewcontrollers */,
 				A28153B2226B4F5500D3BA3C /* TableViewCells */,
+				A2FE3CED227887A000008B9D /* New Group */,
 				A20EAAA8225B3ACF0067A9BD /* AppDelegate.swift */,
 				A20EAAAF225B3AD00067A9BD /* Assets.xcassets */,
 				A20EAAB4225B3AD00067A9BD /* Info.plist */,
@@ -157,6 +162,15 @@
 				A214F6B22273693300E010F0 /* ReceivedMessageTableViewCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		A2FE3CED227887A000008B9D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				A2FE3CEE227887FE00008B9D /* CustomWideButton.swift */,
+				A2FE3CF02278883E00008B9D /* CustomSignInTextField.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		B3C65C9DA5E8C9F66F7DF38A /* Frameworks */ = {
@@ -314,8 +328,10 @@
 			files = (
 				A2815374225E1E8E00D3BA3C /* SignUpViewController.swift in Sources */,
 				A281537B225E215200D3BA3C /* User.swift in Sources */,
+				A2FE3CF12278883E00008B9D /* CustomSignInTextField.swift in Sources */,
 				A28153AD2260A38700D3BA3C /* ChatroomTableViewController.swift in Sources */,
 				A2FE3CEB2273BD4E00008B9D /* CurrentUserHandler.swift in Sources */,
+				A2FE3CEF227887FE00008B9D /* CustomWideButton.swift in Sources */,
 				A2815372225E1E7E00D3BA3C /* SignInViewController.swift in Sources */,
 				A20EAAA9225B3ACF0067A9BD /* AppDelegate.swift in Sources */,
 				A28153B1226B484D00D3BA3C /* Chatroom.swift in Sources */,

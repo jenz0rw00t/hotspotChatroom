@@ -2,25 +2,22 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "paper_plane.png",
+      "filename" : "baseline_chat_bubble_outline_black_24pt_1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "paper_plane@2x.png",
+      "filename" : "baseline_chat_bubble_outline_black_24pt_2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "paper_plane@3x.png",
+      "filename" : "baseline_chat_bubble_outline_black_24pt_3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

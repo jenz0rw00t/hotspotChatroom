@@ -10,13 +10,16 @@ import UIKit
 
 class SignInViewController: UIViewController {
 
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailTextField: CustomSignInTextField!
+    @IBOutlet weak var passwordTextField: CustomSignInTextField!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideSpinner()
+        
+        emailTextField.setIcon(#imageLiteral(resourceName: "message"))
+        passwordTextField.setIcon(#imageLiteral(resourceName: "lock"))
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
