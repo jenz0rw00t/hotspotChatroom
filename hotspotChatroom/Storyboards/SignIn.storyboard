@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XfG-WB-h9L">
-                                <rect key="frame" x="188.5" y="282.5" width="37" height="37"/>
+                                <rect key="frame" x="280.5" y="448" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="okp-Lw-YCx">
-                                <rect key="frame" x="87.5" y="800" width="239" height="30"/>
+                                <rect key="frame" x="179.5" y="800" width="239" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFD-Z7-erU">
                                         <rect key="frame" x="0.0" y="0.0" width="179" height="30"/>
@@ -41,60 +41,73 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5ME-hD-PNr">
-                                <rect key="frame" x="64" y="108" width="286" height="158.5"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fCc-ii-OGk">
+                                <rect key="frame" x="64" y="76" width="470" height="340"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-Wu-FjJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="286" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="A2T-tx-beB">
-                                        <rect key="frame" x="0.0" y="36.5" width="286" height="76"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoWithTextCircle" translatesAutoresizingMaskIntoConstraints="NO" id="xhj-6x-YKf">
+                                        <rect key="frame" x="0.0" y="0.0" width="470" height="170"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="170" id="HwD-4l-yJB"/>
+                                            <constraint firstAttribute="height" constant="170" id="O7E-A8-m1E"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="753" axis="vertical" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5ME-hD-PNr">
+                                        <rect key="frame" x="0.0" y="178" width="470" height="162"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5zH-qf-aGI" customClass="CustomSignInTextField" customModule="hotspotChatroom" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="286" height="30"/>
-                                                <color key="tintColor" red="0.7140747905" green="0.76161259410000004" blue="0.7174505591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-Wu-FjJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="470" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHa-UQ-LfL" customClass="CustomSignInTextField" customModule="hotspotChatroom" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="46" width="286" height="30"/>
-                                                <color key="tintColor" red="0.7140747905" green="0.76161259410000004" blue="0.7174505591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                            </textField>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="A2T-tx-beB">
+                                                <rect key="frame" x="0.0" y="40" width="470" height="76"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5zH-qf-aGI" customClass="CustomSignInTextField" customModule="hotspotChatroom" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="470" height="30"/>
+                                                        <color key="tintColor" red="0.7140747905" green="0.76161259410000004" blue="0.7174505591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHa-UQ-LfL" customClass="CustomSignInTextField" customModule="hotspotChatroom" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="46" width="470" height="30"/>
+                                                        <color key="tintColor" red="0.7140747905" green="0.76161259410000004" blue="0.7174505591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                                <variation key="heightClass=compact" axis="horizontal"/>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNi-mW-gTF" customClass="CustomWideButton" customModule="hotspotChatroom" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="132" width="470" height="30"/>
+                                                <color key="backgroundColor" red="0.91077870130000005" green="0.96110206840000001" blue="0.91352766750000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <state key="normal" title="Sign in"/>
+                                                <connections>
+                                                    <action selector="signInButtonPressed:" destination="eO7-Ae-KmI" eventType="touchUpInside" id="1nG-IS-3e8"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <variation key="heightClass=compact" axis="horizontal"/>
+                                        <constraints>
+                                            <constraint firstItem="sNi-mW-gTF" firstAttribute="height" secondItem="aHa-UQ-LfL" secondAttribute="height" id="uoH-L9-wgf"/>
+                                        </constraints>
+                                        <variation key="heightClass=compact" axis="vertical"/>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNi-mW-gTF" customClass="CustomWideButton" customModule="hotspotChatroom" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="128.5" width="286" height="30"/>
-                                        <color key="backgroundColor" red="0.91077870130000005" green="0.96110206840000001" blue="0.91352766750000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <state key="normal" title="Sign in"/>
-                                        <connections>
-                                            <action selector="signInButtonPressed:" destination="eO7-Ae-KmI" eventType="touchUpInside" id="1nG-IS-3e8"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="sNi-mW-gTF" firstAttribute="height" secondItem="aHa-UQ-LfL" secondAttribute="height" id="uoH-L9-wgf"/>
-                                </constraints>
+                                <variation key="heightClass=compact" axis="horizontal" distribution="fillProportionally"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.98712319140000004" green="0.92040514949999996" blue="0.93132418390000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="XfG-WB-h9L" firstAttribute="top" secondItem="fCc-ii-OGk" secondAttribute="bottom" constant="32" id="2IU-KN-bwY"/>
                             <constraint firstItem="okp-Lw-YCx" firstAttribute="centerX" secondItem="p0a-5P-fDd" secondAttribute="centerX" id="2LC-h4-Nk9"/>
-                            <constraint firstItem="5ME-hD-PNr" firstAttribute="top" secondItem="p0a-5P-fDd" secondAttribute="top" constant="64" id="9PH-Mx-UB6"/>
-                            <constraint firstItem="XfG-WB-h9L" firstAttribute="top" secondItem="5ME-hD-PNr" secondAttribute="bottom" constant="16" id="MAy-eU-azd"/>
-                            <constraint firstItem="p0a-5P-fDd" firstAttribute="trailing" secondItem="5ME-hD-PNr" secondAttribute="trailing" constant="64" id="oSu-SX-OsO"/>
+                            <constraint firstItem="fCc-ii-OGk" firstAttribute="top" secondItem="p0a-5P-fDd" secondAttribute="top" constant="32" id="dlb-CX-19q"/>
+                            <constraint firstItem="p0a-5P-fDd" firstAttribute="trailing" secondItem="fCc-ii-OGk" secondAttribute="trailing" constant="64" id="l2T-nO-Tcn"/>
+                            <constraint firstItem="fCc-ii-OGk" firstAttribute="leading" secondItem="p0a-5P-fDd" secondAttribute="leading" constant="64" id="ore-0V-LIq"/>
                             <constraint firstItem="p0a-5P-fDd" firstAttribute="bottom" secondItem="okp-Lw-YCx" secondAttribute="bottom" constant="32" id="pFl-lp-X6G"/>
                             <constraint firstItem="XfG-WB-h9L" firstAttribute="centerX" secondItem="p0a-5P-fDd" secondAttribute="centerX" id="t7L-JQ-Yl8"/>
-                            <constraint firstItem="5ME-hD-PNr" firstAttribute="centerX" secondItem="p0a-5P-fDd" secondAttribute="centerX" id="wCN-Og-DDE"/>
-                            <constraint firstItem="5ME-hD-PNr" firstAttribute="leading" secondItem="p0a-5P-fDd" secondAttribute="leading" constant="64" id="wjB-LH-Day"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p0a-5P-fDd"/>
                     </view>
@@ -219,4 +232,7 @@
             <point key="canvasLocation" x="352" y="-384"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LogoWithTextCircle" width="470" height="470"/>
+    </resources>
 </document>

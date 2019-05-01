@@ -40,12 +40,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))) 
     }
     
-    // Om man varit inloggad på annat konto och går in i chat igen behövs tydligen detta
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        self.chatTableView.reloadData()
-//    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         currentUser = CurrentUserHandler.shared.currentUser
@@ -104,6 +98,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             let bottomSafeAreaHeight = getBottomSafeAreaHeight()
             
             bottomConstraint.constant = isKeyboardShowing ? -keyboardHeight+bottomSafeAreaHeight : 0
+            //bottomConstraint.constant = isKeyboardShowing ? -keyboardHeight : 0
+
             
             animateWithKeyboard(isKeyboardShowing: isKeyboardShowing)
         }

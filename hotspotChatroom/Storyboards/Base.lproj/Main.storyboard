@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="8Wp-kf-ir9" customClass="ProfileViewController" customModule="hotspotChatroom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kea-oa-3dB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uVT-XF-joL">
@@ -61,7 +61,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8W-hG-6OS">
-                                <rect key="frame" x="258.5" y="147.5" width="30" height="30"/>
+                                <rect key="frame" x="254.5" y="147.5" width="30" height="30"/>
                                 <color key="tintColor" red="0.7140747905" green="0.76161259410000004" blue="0.7174505591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
@@ -74,7 +74,7 @@
                             <constraint firstItem="uVT-XF-joL" firstAttribute="centerX" secondItem="lim-Xk-hdN" secondAttribute="centerX" id="0i9-HC-2Pc"/>
                             <constraint firstItem="uVT-XF-joL" firstAttribute="leading" secondItem="lim-Xk-hdN" secondAttribute="leading" constant="32" id="FTv-5I-cy7"/>
                             <constraint firstItem="uVT-XF-joL" firstAttribute="top" secondItem="lim-Xk-hdN" secondAttribute="top" constant="64" id="NKt-hl-ODO"/>
-                            <constraint firstItem="o8W-hG-6OS" firstAttribute="leading" secondItem="TlS-3n-k7O" secondAttribute="trailing" constant="8" id="Qau-M5-owt"/>
+                            <constraint firstItem="o8W-hG-6OS" firstAttribute="leading" secondItem="TlS-3n-k7O" secondAttribute="trailing" constant="4" id="Qau-M5-owt"/>
                             <constraint firstItem="o8W-hG-6OS" firstAttribute="centerY" secondItem="TlS-3n-k7O" secondAttribute="centerY" id="g0Q-Ik-MyJ"/>
                             <constraint firstItem="lim-Xk-hdN" firstAttribute="trailing" secondItem="uVT-XF-joL" secondAttribute="trailing" constant="32" id="lOd-2G-qN7"/>
                         </constraints>
@@ -95,7 +95,7 @@
             <objects>
                 <tableViewController id="7fi-B1-1cP" customClass="ChatroomTableViewController" customModule="hotspotChatroom" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5D8-TJ-SMM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -166,7 +166,7 @@
             <objects>
                 <viewController id="aml-aj-JN2" customClass="ChatViewController" customModule="hotspotChatroom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O5J-mI-hpc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aqd-24-qtI">
@@ -187,10 +187,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" horizontalHuggingPriority="240" verticalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="u7F-76-Fng">
-                                                    <rect key="frame" x="16" y="21" width="89" height="55"/>
+                                                    <rect key="frame" x="16" y="23" width="89" height="53"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="245" verticalHuggingPriority="245" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAS-Xc-o76">
-                                                            <rect key="frame" x="10" y="10" width="69" height="35"/>
+                                                            <rect key="frame" x="10" y="10" width="69" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -219,7 +219,7 @@
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="u7F-76-Fng" secondAttribute="trailing" constant="140" id="TWl-GV-VSd"/>
                                                 <constraint firstItem="UEE-x0-OOF" firstAttribute="top" secondItem="B0s-mM-01A" secondAttribute="top" constant="2" id="bam-KA-w8n"/>
                                                 <constraint firstItem="UEE-x0-OOF" firstAttribute="leading" secondItem="B0s-mM-01A" secondAttribute="leading" constant="16" id="iZq-ps-ZhQ"/>
-                                                <constraint firstItem="u7F-76-Fng" firstAttribute="top" secondItem="UEE-x0-OOF" secondAttribute="bottom" constant="2" id="sTm-re-TUD"/>
+                                                <constraint firstItem="u7F-76-Fng" firstAttribute="top" secondItem="UEE-x0-OOF" secondAttribute="bottom" constant="4" id="sTm-re-TUD"/>
                                                 <constraint firstItem="sCN-3b-fAZ" firstAttribute="leading" secondItem="u7F-76-Fng" secondAttribute="trailing" constant="2" id="sfH-rT-3tv"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -279,7 +279,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2IK-xp-WRM">
                                         <rect key="frame" x="376" y="10" width="30" height="30"/>
-                                        <color key="tintColor" red="0.53000683670000004" green="0.56550694690000003" blue="0.53513057249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.7140747905" green="0.76161259410000004" blue="0.7174505591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="paper_plane"/>
                                         <connections>
                                             <action selector="sendButtonPressed:" destination="aml-aj-JN2" eventType="touchUpInside" id="bjS-E9-Wv7"/>
@@ -353,9 +353,10 @@
         <scene sceneID="vyb-zh-b06">
             <objects>
                 <tabBarController id="dbd-IA-V2Z" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="6CQ-ib-hx3">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6CQ-ib-hx3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.98712319140000004" green="0.92040514949999996" blue="0.93132418390000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" red="0.7140747905" green="0.76161259410000004" blue="0.7174505591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>

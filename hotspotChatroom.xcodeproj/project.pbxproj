@@ -102,7 +102,7 @@
 				A2815370225E1E2800D3BA3C /* Database */,
 				A281536E225E1DBB00D3BA3C /* Viewcontrollers */,
 				A28153B2226B4F5500D3BA3C /* TableViewCells */,
-				A2FE3CED227887A000008B9D /* New Group */,
+				A2FE3CED227887A000008B9D /* Custom Design */,
 				A20EAAA8225B3ACF0067A9BD /* AppDelegate.swift */,
 				A20EAAAF225B3AD00067A9BD /* Assets.xcassets */,
 				A20EAAB4225B3AD00067A9BD /* Info.plist */,
@@ -164,13 +164,13 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
-		A2FE3CED227887A000008B9D /* New Group */ = {
+		A2FE3CED227887A000008B9D /* Custom Design */ = {
 			isa = PBXGroup;
 			children = (
 				A2FE3CEE227887FE00008B9D /* CustomWideButton.swift */,
 				A2FE3CF02278883E00008B9D /* CustomSignInTextField.swift */,
 			);
-			path = "New Group";
+			path = "Custom Design";
 			sourceTree = "<group>";
 		};
 		B3C65C9DA5E8C9F66F7DF38A /* Frameworks */ = {
