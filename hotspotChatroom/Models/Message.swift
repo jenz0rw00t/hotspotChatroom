@@ -15,7 +15,6 @@ struct Message {
     let message: String
     let messageId: String
     let timestamp: Date
-    // TODO:  let userRef: DocumentReference
     
     func toDictionary() -> [String:Any] {
         return ["username":username, "userId":userId, "message":message, "messageId":messageId, "timestamp": Timestamp(date: timestamp)]

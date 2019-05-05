@@ -62,14 +62,7 @@ class ReceivedMessageTableViewCell: UITableViewCell {
             dateFormatter.dateFormat = "E dd/MM"
             dateString = dateFormatter.string(from: date)
         }
-        
         return dateString
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

@@ -27,6 +27,8 @@ class CustomSignInTextField: UITextField {
         layer.masksToBounds = true
     }
     
+    // setIcon Function by Lawrence Tan https://medium.com/nyc-design/swift-4-add-icon-to-uitextfield-48f5ebf60aa1
+    
     func setIcon(_ image: UIImage) {
         let iconView = UIImageView(frame:
             CGRect(x: 10, y: 5, width: 20, height: 20))

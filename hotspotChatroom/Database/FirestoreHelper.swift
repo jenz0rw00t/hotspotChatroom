@@ -44,7 +44,6 @@ struct FirestoreHelper {
     }
     
     // NEARBY DOCUMENT SEARCH BY Ryan Heitner copied from https://stackoverflow.com/a/51439726
-    // TODO: Do this query without cashing!
     static func getChatroomsNearBy(latitude: Double, longitude: Double, meters: Double, completion: @escaping FIRQuerySnapshotBlock) {
         
         let r_earth : Double = 6378137  // Radius of earth in Meters

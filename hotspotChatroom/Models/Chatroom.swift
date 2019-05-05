@@ -14,7 +14,6 @@ struct Chatroom {
     let creatorUsername: String
     let chatroomId: String
     let location: GeoPoint
-    //   TODO: let creatorRef: DocumentReference
     
     func toDictionary() -> [String:Any] {
         return ["name":name, "creatorUsername":creatorUsername, "chatroomId":chatroomId, "location":location]
